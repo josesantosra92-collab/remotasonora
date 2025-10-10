@@ -8,29 +8,14 @@ import {
 
 // =============================================
 // Landing page bilingüe (EN/ES) con Tailwind CSS
-// - EN como idioma predeterminado
-// - Bullets del hero: solo idioma activo (según el switch EN/ES)
-// - Anclas neutrales (#services, #process, #pricing, #contact)
-// - A11y/SEO: <main role="main"> + skip link + <html lang>
-// - Precios: SOLO pilotos de 3 meses (Drafting y Structural)
-// - Toolset incluye SketchUp + Enscape/Lumion
-// - Comentarios en línea
-// - Autopruebas ligeras para detectar errores de i18n/truncados
 // =============================================
 
-/**
- * Autopruebas simples que corren al montar el componente (modo dev).
- * Validan que el objeto `translations` esté completo y coherente.
- * Si algo falla, se muestra en consola pero no rompe la UI.
- */
 function runSelfTests() {
   try {
     const langs: Array<"en" | "es"> = ["en", "es"];
     langs.forEach((lc) => {
       const t = translations[lc];
       if (!t) throw new Error(`translations[${lc}] missing`);
-
-      // Claves principales que deben existir
       const requiredTop = [
         "nav",
         "hero",
@@ -44,11 +29,9 @@ function runSelfTests() {
         "footer",
       ] as const;
       requiredTop.forEach((k) => {
-        // @ts-ignore acceso por índice dinámico
+        // @ts-ignore
         if (!t[k]) throw new Error(`${lc}.${k} missing`);
       });
-
-      // Estructura mínima
       if (!Array.isArray(t.services.cards) || t.services.cards.length !== 3)
         throw new Error(`${lc}.services.cards must have 3 items`);
       if (!Array.isArray(t.process.steps) || t.process.steps.length !== 4)
@@ -56,13 +39,11 @@ function runSelfTests() {
       if (!Array.isArray(t.pricing.plans) || t.pricing.plans.length !== 2)
         throw new Error(`${lc}.pricing.plans must have 2 items (pilot only)`);
     });
-
-    // Checks puntuales para detectar truncados o comillas sin cerrar
-    if (translations.es.process.steps[2].title !== "Piloto")
-      throw new Error("ES step[2].title should be 'Piloto'");
+    // Permitir "Piloto (hasta 3 meses)"
+    if (!translations.es.process.steps[2].title.toLowerCase().includes("piloto"))
+      throw new Error("ES step[2].title should include 'Piloto'");
     if (translations.en.hero.title1 !== "Engineers, drafters and architects,")
       throw new Error("EN hero.title1 must be neutral (no nationality)");
-
     console.info("[i18n self-test] OK");
   } catch (err) {
     console.error("[i18n self-test] FAILED:", err);
@@ -70,26 +51,21 @@ function runSelfTests() {
 }
 
 export default function App() {
-  // Estado del idioma; EN por defecto. Fallback a EN si la clave no existe.
   const [lang, setLang] = useState<"es" | "en">("en");
   const t = useMemo(() => translations[lang] ?? translations.en, [lang]);
-
-  // UI: estado del menú móvil
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // A11y/SEO: sincroniza <html lang="...">
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  // Ejecuta autopruebas al montar
   useEffect(() => {
     if (typeof window !== "undefined") runSelfTests();
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Skip link para navegación con teclado */}
+      {/* Skip link */}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white border rounded px-3 py-2 shadow"
@@ -97,16 +73,13 @@ export default function App() {
         {lang === "es" ? "Saltar al contenido" : "Skip to content"}
       </a>
 
-      {/* Header con navegación principal y cambio de idioma */}
+      {/* HEADER */}
       <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-2xl bg-gray-900 text-white grid place-items-center font-semibold">
-              RS
-            </div>
+            <div className="h-9 w-9 rounded-2xl bg-gray-900 text-white grid place-items-center font-semibold">RS</div>
             <div className="font-semibold">Remota Sonora</div>
           </div>
-          {/* Navegación de escritorio */}
           <nav aria-label="Primary" className="hidden md:flex items-center gap-4 text-sm">
             <a href="#services" className="hover:opacity-80">{t.nav.services}</a>
             <a href="#process" className="hover:opacity-80">{t.nav.process}</a>
@@ -114,7 +87,6 @@ export default function App() {
             <a href="#contact" className="px-3 py-1.5 rounded-xl bg-gray-900 text-white">{t.nav.quote}</a>
             <LanguageSwitcher lang={lang} setLang={setLang} />
           </nav>
-          {/* Menú móvil */}
           <button
             type="button"
             aria-label={lang === "es" ? "Abrir menú" : "Open menu"}
@@ -129,7 +101,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* Panel del menú móvil */}
         {mobileOpen && (
           <div id="mobile-menu" className="md:hidden border-b bg-white">
             <div className="max-w-7xl mx-auto px-4 py-3 grid gap-3">
@@ -144,7 +115,7 @@ export default function App() {
       </header>
 
       <main id="main" role="main">
-        {/* HERO: título, subtítulo, CTAs y bullets del idioma activo */}
+        {/* HERO */}
         <section className="relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
             <div>
@@ -159,7 +130,6 @@ export default function App() {
               <p className="mt-3 text-sm text-gray-500">{t.hero.footnote}</p>
             </div>
 
-            {/* Bullets (idioma actual solamente) */}
             <div className="p-6 bg-white shadow rounded-2xl">
               <ul className="grid gap-2 text-sm">
                 {t.hero.bullets.map((b, i) => (
@@ -205,7 +175,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* PRICING (solo pilotos de 3 meses) */}
+        {/* PRICING */}
         <section id="pricing" className="border-t bg-white">
           <div className="max-w-7xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold">{t.pricing.title}</h2>
@@ -264,52 +234,21 @@ export default function App() {
               method="POST"
               acceptCharset="UTF-8"
               className="mt-8"
-              >
+            >
               <div className="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  required
-                  className="w-full border p-2 rounded"
-                  />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  required
-                  className="w-full border p-2 rounded"
-                  />
+                <input type="text" name="name" placeholder="Name" required className="w-full border p-2 rounded" />
+                <input type="email" name="email" placeholder="Email" required className="w-full border p-2 rounded" />
               </div>
 
-              <input
-                type="text"
-                name="company"
-                placeholder="Company / Business"
-                className="w-full border p-2 rounded mt-4"
-                />
+              <input type="text" name="company" placeholder="Company / Business" className="w-full border p-2 rounded mt-4" />
+              <input type="text" name="tools" placeholder="Software or desired style (AutoCAD, Revit, etc.)" className="w-full border p-2 rounded mt-4" />
 
-              <input
-                type="text"
-                name="tools"
-                placeholder="Software or desired style (AutoCAD, Revit, etc.)"
-                className="w-full border p-2 rounded mt-4"
-                />
-
-              <textarea
-                name="message"
-                placeholder="What you need"
-                required
-                className="w-full border p-2 rounded h-28 mt-4"
-                ></textarea>
+              <textarea name="message" placeholder="What you need" required className="w-full border p-2 rounded h-28 mt-4"></textarea>
 
               <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
               <input type="text" name="_gotcha" style={{ display: "none" }} />
 
-              <button
-                type="submit"
-                className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4 w-full md:w-auto"
-                >
+              <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4 w-full md:w-auto">
                 {t.form.send}
               </button>
 
@@ -319,9 +258,7 @@ export default function App() {
 
               <div className="text-xs text-gray-500 mt-2">
                 {t.contact.alt}{" "}
-                <a className="underline" href="mailto:hello@remotasonora.com">
-                  hello@remotasonora.com
-                </a>
+                <a className="underline" href="mailto:hello@remotasonora.com">hello@remotasonora.com</a>
               </div>
             </form>
           </div>
@@ -339,7 +276,6 @@ export default function App() {
   );
 }
 
-// Selector de idioma compacto (EN a la izquierda, ES a la derecha)
 function LanguageSwitcher({
   lang,
   setLang
@@ -367,7 +303,6 @@ function LanguageSwitcher({
   );
 }
 
-// Card genérica para listas
 const Card = memo(function Card({
   title,
   children
@@ -383,7 +318,6 @@ const Card = memo(function Card({
   );
 });
 
-// Componente para planes de precio
 const Plan = memo(function Plan({
   title,
   price,
@@ -409,7 +343,7 @@ const Plan = memo(function Plan({
 });
 
 // =====================================================
-// i18n: textos en inglés y español (completos y coherentes)
+// i18n
 // =====================================================
 const translations = {
   en: {
@@ -424,28 +358,28 @@ const translations = {
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calculation packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (per client license).",
-        "NDA(Non-Disclosure Agreement)/PIA(Proprietary Information Agreement), anti-poaching clauses and Zero-Trust access control.",
-        "1–2 week kickoff process with QA and checklists.",
+        "NDA/PIA, anti-poaching clauses and Zero-Trust access control.",
+        "1–3 week kickoff process with QA and checklists.",
       ],
     },
     cta: { meet: "Book a call", learn: "Learn more" },
     services: {
       title: "Services",
       subtitle:
-        "We serve engineering, general architecture, and also hands-on clients who need design drafting (e.g., landscaping).",
+        "We serve engineering, general architecture, and also non-technical clients who need design drafting (e.g., landscaping).",
       cards: [
         {
           title: "Drafting / BIM",
           items: [
             "Plan redlines (Structural, Architectural, MEP)",
-            "Drafting construction details",
+            "Detail drafting (construction details)",
             "Revit modeling / agreed Level of Detail",
           ],
         },
         {
           title: "Structural support",
           items: [
-            "Support on Gravity and lateral analysis",
+            "Support on gravity and lateral analysis",
             "Calculation packages (Enercalc/hand calcs)",
             "Retaining walls, headers, beams, connections",
           ],
@@ -466,59 +400,67 @@ const translations = {
       steps: [
         {
           title: "Discovery",
-          desc: "30–45 min to align scope, software/style and standards. We match your requirements with our team’s experience and tools."
+          desc: "30–45 min meeting with client to align scope, software/style and standards."
         },
         {
-          title: "Onboarding",
-          desc: "1–2 weeks: NDA, access setup, playbooks and deliverable checklists. Everything ready for a smooth start."
+          title: "Kickoff / initial setup",
+          desc: "1–3 weeks: NDA settled, access setup, playbooks and job checklists."
         },
         {
-          title: "Pilot",
-          desc: "1–2 weeks: real tests with feedback and adjustments. We validate workflow, quality and communication before scaling."
+          title: "Pilot (up to 3 months)",
+          desc: "Real tests with feedback and adjustments. We validate workflow, quality and communication before scaling."
         },
         {
           title: "Production",
-          desc: "Full rate, quality metrics and agreed SLAs. Integration typically flows better from month 2–3."
+          desc: "Operating at full rate with agreed SLAs and regular invoicing; integration typically flows better from month 2–3."
         },
       ],
     },
     pricing: {
-      title: "Pricing – 3-month Pilot",
+      title: "Pricing – Pilot (up to 3 months)",
       note: "*Monthly USD invoicing. 'From' rates—may vary with required software and scope.",
       plans: [
         {
-          title: "Drafting – Pilot (3 months)",
+          title: "Drafting – Pilot (up to 3 months)",
           price: "from $18/h",
-          note: "QA focus, agreed LOD",
-          items: ["Redlines / Details", "Sheets ready for review", "Weekly timesheet & report"],
+          items: [
+            "Redlines / Details",
+            "Sheets ready for review",
+            "Daily timesheet tracking, weekly report to client",
+            "Progress reviews as needed",
+          ],
         },
         {
-          title: "Structures – Pilot (3 months)",
+          title: "Structures – Pilot (up to 3 months)",
           price: "from $25/h",
-          note: "Intensive QA, basic calcs",
-          items: ["Structural support", "Basic calc packages", "Bi-weekly reviews"],
+          items: [
+            "Structural support",
+            "Calculation packages",
+            "Daily timesheet tracking, weekly report to client",
+            "Progress reviews as needed",
+          ],
         },
       ],
     },
     antipoach: {
       title: "Contracts with anti-poaching",
       desc:
-        "We protect your team and ours: contracts include non-solicit and no direct-hire of assigned personnel for a defined period.",
+        "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
       items: [
-        "NDA + MSA with anti-poaching",
-        "Project SOW with standards & deliverables",
-        "Clear IP ownership & confidentiality",
+        "NDA (Non-Disclosure Agreement): confidentiality of shared information",
+        "MSA (Master Services Agreement): overarching commercial and legal terms",
+        "SOW (Statement of Work): scope, standards and deliverables per project",
       ],
     },
     clients: {
       title: "Who we serve",
       desc:
-        "Beyond engineering firms, we support businesses and independent architects as an embedded team.",
+        "Beyond engineering firms, we support businesses and independent architects.",
       items: [
         "Structural & architectural engineering firms",
         "General contractors & subcontractors",
-        "Landscaping businesses needing garden design",
-        "Independent architects: you win the client; we align the workflow and operate as your team",
+        "Landscaping businesses",
+        "Independent architects: you win the client; we align the workflow",
       ],
     },
     contact: {
@@ -551,40 +493,40 @@ const translations = {
         "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en USD, sin nóminas ni seguros para ti.",
       footnote: "Capacitación específica por disciplina y software.",
       bullets: [
-        "Relevo rápido en picos de carga (submittals, redlines, calc packages).",
+        "Relevo rápido en picos de carga (submittals, redlines, paquetes de cálculo).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (según licencia del cliente).",
         "NDA/PIA, cláusulas antipoaching y control de acceso Zero-Trust.",
-        "Onboarding de 1–2 semanas con QA y checklists.",
+        "Kickoff de 1–3 semanas con QA y checklists.",
       ],
     },
     cta: { meet: "Agenda una llamada", learn: "Conoce más" },
     services: {
       title: "Servicios",
       subtitle:
-        "Cubrimos ingeniería, arquitectura en general y también clientes no-técnicos que requieren diseño (p. ej., jardinería/landscaping).",
+        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren drafting de diseño (p. ej., landscaping).",
       cards: [
         {
           title: "Drafting / BIM",
           items: [
-            "Redlines a planos (S, A, MEP)",
-            "Detalles constructivos y hojas S",
-            "Modelado básico Revit / LOD acordado",
+            "Redlines a planos (Estructural, Arquitectónico, MEP)",
+            "Dibujo de detalles constructivos",
+            "Modelado Revit / LOD acordado",
           ],
         },
         {
-          title: "Cálculo estructural",
+          title: "Apoyo estructural",
           items: [
-            "Apoyo en cargas y análisis",
-            "Memorias (Enercalc/hand calcs)",
-            "Muros de contención, headers, beams, conexiones",
+            "Apoyo en análisis por cargas gravitacionales y laterales",
+            "Paquetes de cálculo (Enercalc/hand calcs)",
+            "Muros de contención, headers, vigas, conexiones",
           ],
         },
         {
           title: "Arquitectura & Paisaje",
           items: [
-            "Drafting y apoyo a arquitectos",
+            "Drafting y asistencia arquitectónica",
             "Planos de jardín con criterios de riego e iluminación",
-            "Renders/layouts 2D para cotización (SketchUp, Enscape/Lumion)",
+            "Layouts/renders 2D para cotización (SketchUp, Enscape/Lumion)",
           ],
         },
       ],
@@ -595,59 +537,67 @@ const translations = {
       steps: [
         {
           title: "Exploración",
-          desc: "30–45 min para entender alcance, software/estilo y estándares. Comparamos tus requerimientos con nuestra experiencia y herramientas."
+          desc: "Reunión de 30–45 min con el cliente para alinear alcance, software/estilo y estándares."
         },
         {
-          title: "Onboarding",
-          desc: "1–2 semanas: NDA, accesos, playbooks y checklist de entregables. Todo listo para empezar sin fricción."
+          title: "Kickoff / configuración inicial",
+          desc: "1–3 semanas: NDA firmado, accesos, playbooks y checklists de trabajo."
         },
         {
-          title: "Piloto",
-          desc: "1–2 semanas: pruebas reales con feedback y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
+          title: "Piloto (hasta 3 meses)",
+          desc: "Pruebas reales con feedback y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
         },
         {
           title: "Producción",
-          desc: "Tarifa plena, métricas de calidad y SLAs acordados. Normalmente la integración fluye mejor a partir del mes 2–3."
+          desc: "Operación normal con SLAs acordados y facturación regular; la integración fluye mejor a partir del mes 2–3."
         },
       ],
     },
     pricing: {
-      title: "Precios – Piloto 3 meses",
+      title: "Precios – Piloto (hasta 3 meses)",
       note: "*Facturación mensual en USD. Tarifas “desde” — pueden variar por software requerido y alcance.",
       plans: [
         {
-          title: "Drafting – Piloto (3 meses)",
+          title: "Drafting – Piloto (hasta 3 meses)",
           price: "desde $18/h",
-          note: "Foco en QA, LOD acordado",
-          items: ["Redlines / Detalles", "Sheets listos para revisión", "Timesheet y reporte semanal"],
+          items: [
+            "Redlines / Detalles",
+            "Sheets listos para revisión",
+            "Seguimiento diario de horas y reporte semanal al cliente",
+            "Revisiones de progreso según se necesite",
+          ],
         },
         {
-          title: "Estructuras – Piloto (3 meses)",
+          title: "Estructuras – Piloto (hasta 3 meses)",
           price: "desde $25/h",
-          note: "QA intensivo, memorias básicas",
-          items: ["Apoyo estructural", "Memorias y cálculos básicos", "Revisión quincenal"],
+          items: [
+            "Apoyo estructural",
+            "Paquetes de cálculo",
+            "Seguimiento diario de horas y reporte semanal al cliente",
+            "Revisiones de progreso según se necesite",
+          ],
         },
       ],
     },
     antipoach: {
       title: "Contratos con cláusula antipoaching",
       desc:
-        "Protegemos tu equipo y el nuestro: los contratos incluyen no-solicitación y no-contratación directa del personal por un plazo definido.",
+        "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de IP y confidencialidad claras.",
       items: [
-        "NDA + MSA (Master Services Agreement) con antipoaching",
-        "SOW por proyecto con estándares y entregables",
-        "Propiedad intelectual y confidencialidad claras",
+        "NDA (Non-Disclosure Agreement): confidencialidad de la información compartida",
+        "MSA (Master Services Agreement): términos comerciales y legales generales",
+        "SOW (Statement of Work): alcance, estándares y entregables por proyecto",
       ],
     },
     clients: {
       title: "Clientes a quienes servimos",
       desc:
-        "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes como parte de su equipo.",
+        "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes.",
       items: [
         "Firmas de ingeniería estructural y arquitectónica",
         "Contratistas generales y subcontratistas",
-        "Empresas de jardinería/landscaping que necesitan diseño de jardín",
-        "Arquitectos independientes: tú consigues el cliente; acordamos proceso y operamos como tu equipo",
+        "Empresas de landscaping",
+        "Arquitectos independientes: tú consigues al cliente; alineamos el flujo",
       ],
     },
     contact: {
@@ -670,3 +620,4 @@ const translations = {
     },
   },
 } as const;
+
