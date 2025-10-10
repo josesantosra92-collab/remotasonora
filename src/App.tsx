@@ -1,4 +1,10 @@
-import { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  memo,
+  type ReactNode
+} from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) con Tailwind CSS
@@ -66,10 +72,9 @@ function runSelfTests() {
 export default function App() {
   // Estado del idioma; EN por defecto. Fallback a EN si la clave no existe.
   const [lang, setLang] = useState<"es" | "en">("en");
-  const t = React.useMemo(() => translations[lang] ?? translations.en, [lang]);
+  const t = useMemo(() => translations[lang] ?? translations.en, [lang]);
 
-  // UI: estado de formulario y menú móvil
-  const [sent, setSent] = useState(false);
+  // UI: estado del menú móvil
   const [mobileOpen, setMobileOpen] = useState(false);
 
   // A11y/SEO: sincroniza <html lang="...">
@@ -81,12 +86,6 @@ export default function App() {
   useEffect(() => {
     if (typeof window !== "undefined") runSelfTests();
   }, []);
-
-  // Simulación de envío (reemplazar por integración real si se desea)
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSent(true);
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -102,7 +101,9 @@ export default function App() {
       <header className="sticky top-0 z-40 backdrop-blur bg-white/70 border-b">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-2xl bg-gray-900 text-white grid place-items-center font-semibold">RS</div>
+            <div className="h-9 w-9 rounded-2xl bg-gray-900 text-white grid place-items-center font-semibold">
+              RS
+            </div>
             <div className="font-semibold">Remota Sonora</div>
           </div>
           {/* Navegación de escritorio */}
@@ -237,7 +238,7 @@ export default function App() {
           </div>
         </section>
 
-       {/* CONTACT */}
+        {/* CONTACT */}
         <section id="contact" className="border-t bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold">{t.contact.title}</h2>
@@ -248,7 +249,7 @@ export default function App() {
               method="POST"
               acceptCharset="UTF-8"
               className="mt-8"
-              >
+            >
               <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -256,14 +257,14 @@ export default function App() {
                   placeholder="Name"
                   required
                   className="w-full border p-2 rounded"
-                  />
+                />
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
                   required
                   className="w-full border p-2 rounded"
-                  />
+                />
               </div>
 
               <input
@@ -271,21 +272,21 @@ export default function App() {
                 name="company"
                 placeholder="Company / Business"
                 className="w-full border p-2 rounded mt-4"
-                />
+              />
 
               <input
                 type="text"
                 name="tools"
                 placeholder="Software or desired style (AutoCAD, Revit, etc.)"
                 className="w-full border p-2 rounded mt-4"
-                />
+              />
 
               <textarea
                 name="message"
                 placeholder="What you need"
                 required
                 className="w-full border p-2 rounded h-28 mt-4"
-                ></textarea>
+              ></textarea>
 
               <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
               <input type="text" name="_gotcha" style={{ display: "none" }} />
@@ -293,7 +294,7 @@ export default function App() {
               <button
                 type="submit"
                 className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4 w-full md:w-auto"
-                >
+              >
                 {t.form.send}
               </button>
 
@@ -306,8 +307,8 @@ export default function App() {
             </form>
           </div>
         </section>
-        </main>
-        
+      </main>
+
       {/* FOOTER */}
       <footer className="border-t bg-white">
         <div className="max-w-7xl mx-auto px-4 py-10 text-sm text-gray-500 grid md:grid-cols-2 gap-4">
@@ -320,7 +321,13 @@ export default function App() {
 }
 
 // Selector de idioma compacto (EN a la izquierda, ES a la derecha)
-function LanguageSwitcher({ lang, setLang }: { lang: "es" | "en"; setLang: (l: "es" | "en") => void }) {
+function LanguageSwitcher({
+  lang,
+  setLang
+}: {
+  lang: "es" | "en";
+  setLang: (l: "es" | "en") => void;
+}) {
   return (
     <div className="flex items-center gap-1 rounded-xl border px-1 py-0.5">
       <button
@@ -342,7 +349,13 @@ function LanguageSwitcher({ lang, setLang }: { lang: "es" | "en"; setLang: (l: "
 }
 
 // Card genérica para listas
-const Card = React.memo(function Card({ title, children }: { title: string; children: React.ReactNode }) {
+const Card = memo(function Card({
+  title,
+  children
+}: {
+  title: string;
+  children: ReactNode;
+}) {
   return (
     <div className="bg-white rounded-2xl p-6 shadow">
       <div className="font-semibold text-lg">{title}</div>
@@ -352,7 +365,17 @@ const Card = React.memo(function Card({ title, children }: { title: string; chil
 });
 
 // Componente para planes de precio
-const Plan = React.memo(function Plan({ title, price, note, items }: { title: string; price: string; note?: string; items: string[] }) {
+const Plan = memo(function Plan({
+  title,
+  price,
+  note,
+  items
+}: {
+  title: string;
+  price: string;
+  note?: string;
+  items: string[];
+}) {
   return (
     <div className="rounded-2xl border p-6">
       <div className="text-sm text-gray-500">Plan</div>
@@ -365,25 +388,6 @@ const Plan = React.memo(function Plan({ title, price, note, items }: { title: st
     </div>
   );
 });
-
-// Campos de formulario (Input y Textarea)
-function Input({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
-  return (
-    <label className="grid gap-1 text-sm">
-      <span className="text-gray-700">{label}</span>
-      <input name={name} type={type} required={required} className="px-3 py-2 rounded-xl border focus:outline-none focus:ring w-full" />
-    </label>
-  );
-}
-
-function Textarea({ label, name, required = false }: { label: string; name: string; required?: boolean }) {
-  return (
-    <label className="grid gap-1 text-sm">
-      <span className="text-gray-700">{label}</span>
-      <textarea name={name} required={required} rows={5} className="px-3 py-2 rounded-xl border focus:outline-none focus:ring w-full" />
-    </label>
-  );
-}
 
 // =====================================================
 // i18n: textos en inglés y español (completos y coherentes)
