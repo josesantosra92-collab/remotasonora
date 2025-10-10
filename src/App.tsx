@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) con Tailwind CSS
