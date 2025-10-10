@@ -242,7 +242,12 @@ export default function App() {
           <div className="max-w-3xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold">{t.contact.title}</h2>
             <p className="mt-2 text-gray-600">{t.contact.subtitle}</p>
-            <form onSubmit={handleSubmit} className="mt-8 bg-white p-6 rounded-2xl shadow grid gap-4">
+           <form
+             action="https://formspree.io/f/xdkwwely"
+             method="POST"
+             acceptCharset="UTF-8"
+             className="..."
+             >
               <div className="grid md:grid-cols-2 gap-4">
                 <Input label={t.form.name} name="name" required />
                 <Input label={t.form.email} name="email" type="email" required />
@@ -250,9 +255,17 @@ export default function App() {
               <Input label={t.form.company} name="company" />
               <Input label={t.form.tools} name="tools" />
               <Textarea label={t.form.message} name="message" required />
-              <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white">{t.form.send}</button>
-              {sent && <div className="text-green-700 text-sm">{t.form.thanks}</div>}
-              <div className="text-xs text-gray-500">{t.contact.alt} <a className="underline" href="mailto:hello@remotasonora.com">hello@remotasonora.com</a></div>
+             <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
+             <input type="text" name="_gotcha" style={{ display: 'none' }} />
+              <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white">
+                {t.form.send}
+              </button>
+             <div className="text-xs text-gray-500 mt-2">
+               {t.contact.alt}{" "}
+               <a className="underline" href="mailto:hello@remotasonora.com">
+                 hello@remotasonora.com</a>
+              </a>
+             </div>
             </form>
           </div>
         </section>
