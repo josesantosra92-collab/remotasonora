@@ -245,11 +245,26 @@ export default function App() {
             <p className="mt-2 text-gray-600">{t.contact.subtitle}</p>
 
             <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const form = e.currentTarget;
+                const data = new FormData(form);
+                const res = await fetch(form.action, {
+                  method: form.method,
+                  body: data,
+                  headers: { Accept: "application/json" },
+                });
+                if (res.ok) {
+                  form.reset();
+                  const thank = document.getElementById("thankMessage");
+                  if (thank) thank.classList.remove("hidden");
+                }
+              }}
               action="https://formspree.io/f/xqayypvw"
               method="POST"
               acceptCharset="UTF-8"
               className="mt-8"
-            >
+              >
               <div className="grid md:grid-cols-2 gap-4">
                 <input
                   type="text"
@@ -257,14 +272,14 @@ export default function App() {
                   placeholder="Name"
                   required
                   className="w-full border p-2 rounded"
-                />
+                  />
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
                   required
                   className="w-full border p-2 rounded"
-                />
+                  />
               </div>
 
               <input
@@ -272,21 +287,21 @@ export default function App() {
                 name="company"
                 placeholder="Company / Business"
                 className="w-full border p-2 rounded mt-4"
-              />
+                />
 
               <input
                 type="text"
                 name="tools"
                 placeholder="Software or desired style (AutoCAD, Revit, etc.)"
                 className="w-full border p-2 rounded mt-4"
-              />
+                />
 
               <textarea
                 name="message"
                 placeholder="What you need"
                 required
                 className="w-full border p-2 rounded h-28 mt-4"
-              ></textarea>
+                ></textarea>
 
               <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
               <input type="text" name="_gotcha" style={{ display: "none" }} />
@@ -294,9 +309,13 @@ export default function App() {
               <button
                 type="submit"
                 className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4 w-full md:w-auto"
-              >
+                >
                 {t.form.send}
               </button>
+
+              <div id="thankMessage" className="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-xl text-center">
+                {t.form.thanks}
+              </div>
 
               <div className="text-xs text-gray-500 mt-2">
                 {t.contact.alt}{" "}
