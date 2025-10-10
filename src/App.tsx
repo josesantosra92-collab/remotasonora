@@ -347,11 +347,11 @@ const translations = {
       title3: ", ready for your backlog",
       subtitle:
         "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly USD invoices—no payroll or benefits on your side.",
-      footnote: "Role‑specific training and software alignment.",
+      footnote: "Role-specific training and software alignment.",
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calc packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (per client license).",
-        "NDA/PIA, anti‑poaching clauses and Zero‑Trust access control.",
+        "NDA/PIA, anti-poaching clauses and Zero-Trust access control.",
         "1–2 week onboarding with QA and checklists.",
       ],
     },
@@ -359,13 +359,13 @@ const translations = {
     services: {
       title: "Services",
       subtitle:
-        "We serve engineering, general architecture, and also non‑technical clients who need design (e.g., landscaping).",
+        "We serve engineering, general architecture, and also non-technical clients who need design (e.g., landscaping).",
       cards: [
         {
           title: "Drafting / BIM",
           items: [
             "Plan redlines (S, A, MEP)",
-            "Constructability details and S‑sheets",
+            "Constructability details and S-sheets",
             "Basic Revit modeling / agreed LOD",
           ],
         },
@@ -391,36 +391,48 @@ const translations = {
       title: "How we work",
       step: "Step",
       steps: [
-        { title: "Discovery", desc: "30–45 min to align scope, software/style and standards." },
-        { title: "Onboarding", desc: "1–2 weeks: NDA, access, playbooks and deliverable checklists." },
-        { title: "Pilot (3 months for architects)", desc: "Initial engagement with real tasks, feedback and adjustments." },
-        { title: "Production", desc: "Full rate, quality metrics and agreed SLAs." },
+        {
+          title: "Discovery",
+          desc: "30–45 min to align scope, software/style and standards. We match your requirements with our team’s experience and tools."
+        },
+        {
+          title: "Onboarding",
+          desc: "1–2 weeks: NDA, access setup, playbooks and deliverable checklists. Everything ready for a smooth start."
+        },
+        {
+          title: "Pilot",
+          desc: "1–2 weeks: real tests with feedback and adjustments. We validate workflow, quality and communication before scaling."
+        },
+        {
+          title: "Production",
+          desc: "Full rate, quality metrics and agreed SLAs. Integration typically flows better from month 2–3."
+        },
       ],
     },
     pricing: {
-      title: "3‑month Pilot Pricing",
+      title: "Pricing – 3-month Pilot",
       note: "*Monthly USD invoicing. 'From' rates—may vary with required software and scope.",
       plans: [
         {
           title: "Drafting – Pilot (3 months)",
           price: "from $18/h",
           note: "QA focus, agreed LOD",
-          items: ["Redlines / Details", "Sheets ready for review", "Timesheet + weekly report"],
+          items: ["Redlines / Details", "Sheets ready for review", "Weekly timesheet & report"],
         },
         {
           title: "Structures – Pilot (3 months)",
           price: "from $25/h",
-          note: "Heavy QA, calc packages",
-          items: ["Structural support", "Basic calc packages", "Bi‑weekly reviews"],
+          note: "Intensive QA, basic calcs",
+          items: ["Structural support", "Basic calc packages", "Bi-weekly reviews"],
         },
       ],
     },
     antipoach: {
-      title: "Contracts with anti‑poaching",
+      title: "Contracts with anti-poaching",
       desc:
-        "We protect your team and ours: contracts include non‑solicit and no direct‑hire of assigned personnel for a defined period.",
+        "We protect your team and ours: contracts include non-solicit and no direct-hire of assigned personnel for a defined period.",
       items: [
-        "NDA + MSA with anti‑poaching",
+        "NDA + MSA with anti-poaching",
         "Project SOW with standards & deliverables",
         "Clear IP ownership & confidentiality",
       ],
@@ -452,9 +464,10 @@ const translations = {
     },
     footer: {
       left: "Built in Sonora • Operating from Tucson/HMO.",
-      right: "NDA | Anti‑poaching | USD invoicing | Data safeguarded",
+      right: "NDA | Anti-poaching | USD invoicing | Data safeguarded",
     },
   },
+
   es: {
     nav: { services: "Servicios", process: "Proceso", pricing: "Precios", quote: "Cotiza" },
     hero: {
@@ -467,7 +480,7 @@ const translations = {
       bullets: [
         "Relevo rápido en picos de carga (submittals, redlines, calc packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (según licencia del cliente).",
-        "NDA/PIA, cláusulas antipoaching y control de acceso Zero‑Trust.",
+        "NDA/PIA, cláusulas antipoaching y control de acceso Zero-Trust.",
         "Onboarding de 1–2 semanas con QA y checklists.",
       ],
     },
@@ -475,7 +488,7 @@ const translations = {
     services: {
       title: "Servicios",
       subtitle:
-        "Cubrimos ingeniería, arquitectura en general y también clientes no‑técnicos que requieren diseño (p. ej., jardinería/landscaping).",
+        "Cubrimos ingeniería, arquitectura en general y también clientes no-técnicos que requieren diseño (p. ej., jardinería/landscaping).",
       cards: [
         {
           title: "Drafting / BIM",
@@ -507,15 +520,27 @@ const translations = {
       title: "Cómo trabajamos",
       step: "Paso",
       steps: [
-        { title: "Exploración", desc: "30–45 min para entender alcance, software/estilo y estándares." },
-        { title: "Onboarding", desc: "1–2 semanas: NDA, accesos, playbooks y checklist de entregables." },
-        { title: "Piloto", desc: "1–2 semanas: pruebas reales con feedback y ajustes." },
-        { title: "Producción", desc: "Tarifa plena, métricas de calidad y SLAs acordados." },
+        {
+          title: "Exploración",
+          desc: "30–45 min para entender alcance, software/estilo y estándares. Comparamos tus requerimientos con nuestra experiencia y herramientas."
+        },
+        {
+          title: "Onboarding",
+          desc: "1–2 semanas: NDA, accesos, playbooks y checklist de entregables. Todo listo para empezar sin fricción."
+        },
+        {
+          title: "Piloto",
+          desc: "1–2 semanas: pruebas reales con feedback y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
+        },
+        {
+          title: "Producción",
+          desc: "Tarifa plena, métricas de calidad y SLAs acordados. Normalmente la integración fluye mejor a partir del mes 2–3."
+        },
       ],
     },
     pricing: {
       title: "Precios – Piloto 3 meses",
-      note: "*Facturación mensual en USD. Tarifas 'desde'—pueden variar por software requerido y alcance.",
+      note: "*Facturación mensual en USD. Tarifas “desde” — pueden variar por software requerido y alcance.",
       plans: [
         {
           title: "Drafting – Piloto (3 meses)",
@@ -534,7 +559,7 @@ const translations = {
     antipoach: {
       title: "Contratos con cláusula antipoaching",
       desc:
-        "Protegemos tu equipo y el nuestro: los contratos incluyen no‑solicitación y no‑contratación directa del personal por un plazo definido.",
+        "Protegemos tu equipo y el nuestro: los contratos incluyen no-solicitación y no-contratación directa del personal por un plazo definido.",
       items: [
         "NDA + MSA (Master Services Agreement) con antipoaching",
         "SOW por proyecto con estándares y entregables",
