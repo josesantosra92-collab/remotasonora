@@ -237,37 +237,76 @@ export default function App() {
           </div>
         </section>
 
-        {/* CONTACT */}
+       {/* CONTACT */}
         <section id="contact" className="border-t bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 py-16">
             <h2 className="text-3xl font-bold">{t.contact.title}</h2>
             <p className="mt-2 text-gray-600">{t.contact.subtitle}</p>
-           <form
-             action="https://formspree.io/f/xdkwwely"
-             method="POST"
-             acceptCharset="UTF-8"
-             className="..."
-             >
-                <div className="grid md:grid-cols-2 gap-4">
-                  <input name="name" type="text" placeholder="Name" required className="w-full border p-2 rounded" />
-                  <input name="email" type="email" placeholder="Email" required className="w-full border p-2 rounded" />
-                </div>
-             <input name="company" type="text" placeholder="Company / Business" className="w-full border p-2 rounded mt-4" />
-             <input name="tools" type="text" placeholder="Software or desired style (AutoCAD, Revit, etc.)" className="w-full border p-2 rounded mt-4" />
-             <textarea name="message" placeholder="What you need" required className="w-full border p-2 rounded h-28 mt-4" />
-             <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
-             <input type="text" name="_gotcha" style={{ display: 'none' }} />
-             <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4">
-               {t.form.send}
-             </button>
-             <div className="text-xs text-gray-500 mt-2">
-               {t.contact.alt}{" "}
-               <a className="underline" href="mailto:hello@remotasonora.com">hello@remotasonora.com</a>
-             </div>
-           </form>
-        </section>
-      </main>
 
+            <form
+              action="https://formspree.io/f/xqayypvw"
+              method="POST"
+              acceptCharset="UTF-8"
+              className="mt-8"
+              >
+              <div className="grid md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Name"
+                  required
+                  className="w-full border p-2 rounded"
+                  />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                  className="w-full border p-2 rounded"
+                  />
+              </div>
+
+              <input
+                type="text"
+                name="company"
+                placeholder="Company / Business"
+                className="w-full border p-2 rounded mt-4"
+                />
+
+              <input
+                type="text"
+                name="tools"
+                placeholder="Software or desired style (AutoCAD, Revit, etc.)"
+                className="w-full border p-2 rounded mt-4"
+                />
+
+              <textarea
+                name="message"
+                placeholder="What you need"
+                required
+                className="w-full border p-2 rounded h-28 mt-4"
+                ></textarea>
+
+              <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
+              <input type="text" name="_gotcha" style={{ display: "none" }} />
+
+              <button
+                type="submit"
+                className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4 w-full md:w-auto"
+                >
+                {t.form.send}
+              </button>
+
+              <div className="text-xs text-gray-500 mt-2">
+                {t.contact.alt}{" "}
+                <a className="underline" href="mailto:hello@remotasonora.com">
+                  hello@remotasonora.com
+                </a>
+              </div>
+            </form>
+          </div>
+        </section>
+        
       {/* FOOTER */}
       <footer className="border-t bg-white">
         <div className="max-w-7xl mx-auto px-4 py-10 text-sm text-gray-500 grid md:grid-cols-2 gap-4">
