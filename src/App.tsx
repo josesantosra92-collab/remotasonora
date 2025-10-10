@@ -422,31 +422,31 @@ const translations = {
         "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly USD invoices—no payroll or benefits on your side.",
       footnote: "Role-specific training and software alignment.",
       bullets: [
-        "Fast relief for load peaks (submittals, redlines, calc packages).",
+        "Fast relief for load peaks (submittals, redlines, calculation packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (per client license).",
-        "NDA/PIA, anti-poaching clauses and Zero-Trust access control.",
-        "1–2 week onboarding with QA and checklists.",
+        "NDA(Non-Disclosure Agreement)/PIA(Proprietary Information Agreement), anti-poaching clauses and Zero-Trust access control.",
+        "1–2 week kickoff process with QA and checklists.",
       ],
     },
     cta: { meet: "Book a call", learn: "Learn more" },
     services: {
       title: "Services",
       subtitle:
-        "We serve engineering, general architecture, and also non-technical clients who need design (e.g., landscaping).",
+        "We serve engineering, general architecture, and also hands-on clients who need design drafting (e.g., landscaping).",
       cards: [
         {
           title: "Drafting / BIM",
           items: [
-            "Plan redlines (S, A, MEP)",
-            "Constructability details and S-sheets",
-            "Basic Revit modeling / agreed LOD",
+            "Plan redlines (Structural, Architectural, MEP)",
+            "Drafting construction details",
+            "Revit modeling / agreed Level of Detail",
           ],
         },
         {
           title: "Structural support",
           items: [
-            "Support on loads & analysis",
-            "Calc packages (Enercalc/hand calcs)",
+            "Support on Gravity and lateral analysis",
+            "Calculation packages (Enercalc/hand calcs)",
             "Retaining walls, headers, beams, connections",
           ],
         },
