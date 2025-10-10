@@ -493,32 +493,32 @@ const translations = {
         "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en USD, sin nóminas ni seguros para ti.",
       footnote: "Capacitación específica por disciplina y software.",
       bullets: [
-        "Relevo rápido en picos de carga (submittals, redlines, paquetes de cálculo).",
+        "Relevo rápido en picos de carga (entregables, correcciones/redlines y paquetes de cálculo).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (según licencia del cliente).",
-        "NDA/PIA, cláusulas antipoaching y control de acceso Zero-Trust.",
-        "Kickoff de 1–3 semanas con QA y checklists.",
+        "NDA/PIA, cláusulas de no captación de personal (anti-poaching) y control de acceso Zero-Trust.",
+        "Kickoff de 1–3 semanas con control de calidad (QA) y listas de verificación.",
       ],
     },
     cta: { meet: "Agenda una llamada", learn: "Conoce más" },
     services: {
       title: "Servicios",
       subtitle:
-        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren drafting de diseño (p. ej., landscaping).",
+        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (p. ej., paisajismo).",
       cards: [
         {
           title: "Drafting / BIM",
           items: [
-            "Redlines a planos (Estructural, Arquitectónico, MEP)",
+            "Correcciones (redlines) a planos (Estructural, Arquitectónico, MEP)",
             "Dibujo de detalles constructivos",
-            "Modelado Revit / LOD acordado",
+            "Modelado en Revit / nivel de detalle (LOD) acordado",
           ],
         },
         {
           title: "Apoyo estructural",
           items: [
-            "Apoyo en análisis por cargas gravitacionales y laterales",
-            "Paquetes de cálculo (Enercalc/hand calcs)",
-            "Muros de contención, headers, vigas, conexiones",
+            "Análisis por cargas gravitacionales y laterales",
+            "Paquetes de cálculo (Enercalc / cálculos a mano)",
+            "Muros de contención, dinteles, vigas y conexiones",
           ],
         },
         {
@@ -526,7 +526,7 @@ const translations = {
           items: [
             "Drafting y asistencia arquitectónica",
             "Planos de jardín con criterios de riego e iluminación",
-            "Layouts/renders 2D para cotización (SketchUp, Enscape/Lumion)",
+            "Planos y renders 2D para cotización (SketchUp, Enscape/Lumion)",
           ],
         },
       ],
@@ -541,11 +541,11 @@ const translations = {
         },
         {
           title: "Kickoff / configuración inicial",
-          desc: "1–3 semanas: NDA firmado, accesos, playbooks y checklists de trabajo."
+          desc: "1–3 semanas: NDA firmado, accesos, playbooks y listas de verificación de trabajo."
         },
         {
           title: "Piloto (hasta 3 meses)",
-          desc: "Pruebas reales con feedback y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
+          desc: "Pruebas reales con retroalimentación y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
         },
         {
           title: "Producción",
@@ -562,9 +562,9 @@ const translations = {
           price: "desde $18/h",
           items: [
             "Redlines / Detalles",
-            "Sheets listos para revisión",
+            "Planos listos para revisión",
             "Seguimiento diario de horas y reporte semanal al cliente",
-            "Revisiones de progreso según se necesite",
+            "Revisiones de avance según se necesite",
           ],
         },
         {
@@ -574,7 +574,7 @@ const translations = {
             "Apoyo estructural",
             "Paquetes de cálculo",
             "Seguimiento diario de horas y reporte semanal al cliente",
-            "Revisiones de progreso según se necesite",
+            "Revisiones de avance según se necesite",
           ],
         },
       ],
@@ -582,7 +582,7 @@ const translations = {
     antipoach: {
       title: "Contratos con cláusula antipoaching",
       desc:
-        "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de IP y confidencialidad claras.",
+        "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
       items: [
         "NDA (Non-Disclosure Agreement): confidencialidad de la información compartida",
         "MSA (Master Services Agreement): términos comerciales y legales generales",
@@ -596,7 +596,7 @@ const translations = {
       items: [
         "Firmas de ingeniería estructural y arquitectónica",
         "Contratistas generales y subcontratistas",
-        "Empresas de landscaping",
+        "Empresas de paisajismo",
         "Arquitectos independientes: tú consigues al cliente; alineamos el flujo",
       ],
     },
@@ -616,8 +616,7 @@ const translations = {
     },
     footer: {
       left: "Hecho en Sonora • Operamos desde Tucson/HMO.",
-      right: "NDA | Antipoaching | Facturación en USD | Datos resguardados",
+      right: "NDA | Cláusula antipoaching | Facturación en USD | Datos resguardados",
     },
   },
 } as const;
-
