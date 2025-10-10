@@ -306,6 +306,7 @@ export default function App() {
             </form>
           </div>
         </section>
+        </main>
         
       {/* FOOTER */}
       <footer className="border-t bg-white">
