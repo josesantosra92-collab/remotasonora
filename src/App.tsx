@@ -248,26 +248,23 @@ export default function App() {
              acceptCharset="UTF-8"
              className="..."
              >
-              <div className="grid md:grid-cols-2 gap-4">
-                <Input label={t.form.name} name="name" required />
-                <Input label={t.form.email} name="email" type="email" required />
-              </div>
-              <Input label={t.form.company} name="company" />
-              <Input label={t.form.tools} name="tools" />
-              <Textarea label={t.form.message} name="message" required />
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input name="name" type="text" placeholder="Name" required className="w-full border p-2 rounded" />
+                  <input name="email" type="email" placeholder="Email" required className="w-full border p-2 rounded" />
+                </div>
+             <input name="company" type="text" placeholder="Company / Business" className="w-full border p-2 rounded mt-4" />
+             <input name="tools" type="text" placeholder="Software or desired style (AutoCAD, Revit, etc.)" className="w-full border p-2 rounded mt-4" />
+             <textarea name="message" placeholder="What you need" required className="w-full border p-2 rounded h-28 mt-4" />
              <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
              <input type="text" name="_gotcha" style={{ display: 'none' }} />
-              <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white">
-                {t.form.send}
-              </button>
+             <button type="submit" className="px-5 py-3 rounded-2xl bg-gray-900 text-white mt-4">
+               {t.form.send}
+             </button>
              <div className="text-xs text-gray-500 mt-2">
                {t.contact.alt}{" "}
-               <a className="underline" href="mailto:hello@remotasonora.com">
-                 hello@remotasonora.com</a>
-              </a>
+               <a className="underline" href="mailto:hello@remotasonora.com">hello@remotasonora.com</a>
              </div>
-            </form>
-          </div>
+           </form>
         </section>
       </main>
 
