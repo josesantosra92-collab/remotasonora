@@ -236,14 +236,14 @@ export default function App() {
               className="mt-8"
             >
               <div className="grid md:grid-cols-2 gap-4">
-                <input type="text" name="name" placeholder="Name" required className="w-full border p-2 rounded" />
-                <input type="email" name="email" placeholder="Email" required className="w-full border p-2 rounded" />
+                <input type="text" name="name" placeholder={t.form.name} required className="w-full border p-2 rounded" />
+                <input type="email" name="email" placeholder={t.form.email} required className="w-full border p-2 rounded" />
               </div>
 
-              <input type="text" name="company" placeholder="Company / Business" className="w-full border p-2 rounded mt-4" />
-              <input type="text" name="tools" placeholder="Software or desired style (AutoCAD, Revit, etc.)" className="w-full border p-2 rounded mt-4" />
+              <input type="text" name="company" placeholder={t.form.company} className="w-full border p-2 rounded mt-4" />
+              <input type="text" name="tools" placeholder={t.form.tools} className="w-full border p-2 rounded mt-4" />
 
-              <textarea name="message" placeholder="What you need" required className="w-full border p-2 rounded h-28 mt-4"></textarea>
+              <textarea name="message" placeholder={t.form.message} required className="w-full border p-2 rounded h-28 mt-4"></textarea>
 
               <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
               <input type="text" name="_gotcha" style={{ display: "none" }} />
@@ -353,25 +353,25 @@ const translations = {
       title2: "with custom training",
       title3: ", ready for your backlog",
       subtitle:
-        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly USD invoices—no payroll or benefits on your side.",
+        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
       footnote: "Role-specific training and software alignment.",
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calculation packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (per client license).",
-        "NDA/PIA, anti-poaching clauses and Zero-Trust access control.",
-        "1–3 week kickoff process with QA and checklists.",
+        "Non-Disclosure Agreement (NDA) / Proprietary Information Agreement (PIA), anti-poaching clauses, and Zero-Trust access control.",
+        "1–3 week kickoff process with quality assurance (QA) and checklists.",
       ],
     },
     cta: { meet: "Book a call", learn: "Learn more" },
     services: {
       title: "Services",
       subtitle:
-        "We serve engineering, general architecture, and also non-technical clients who need design drafting (e.g., landscaping).",
+        "We serve engineering, general architecture, and also non-technical clients who need design drafting (for example, landscaping).",
       cards: [
         {
-          title: "Drafting / BIM",
+          title: "Drafting / Building Information Modeling (BIM)",
           items: [
-            "Plan redlines (Structural, Architectural, MEP)",
+            "Plan redlines (Structural, Architectural, Mechanical, Electrical, and Plumbing (MEP))",
             "Detail drafting (construction details)",
             "Revit modeling / agreed Level of Detail",
           ],
@@ -380,7 +380,7 @@ const translations = {
           title: "Structural support",
           items: [
             "Support on gravity and lateral analysis",
-            "Calculation packages (Enercalc/hand calcs)",
+            "Calculation packages (Enercalc / hand calculations)",
             "Retaining walls, headers, beams, connections",
           ],
         },
@@ -388,8 +388,8 @@ const translations = {
           title: "Architecture & Landscape",
           items: [
             "Architectural drafting and assistance",
-            "Garden plans incl. irrigation & lighting criteria",
-            "2D layouts/renders for quoting (SketchUp, Enscape/Lumion)",
+            "Garden plans including irrigation and lighting criteria",
+            "Two‑dimensional layouts/renders for quoting (SketchUp, Enscape/Lumion)",
           ],
         },
       ],
@@ -400,25 +400,25 @@ const translations = {
       steps: [
         {
           title: "Discovery",
-          desc: "30–45 min meeting with client to align scope, software/style and standards."
+          desc: "30–45 minute meeting with client to align scope, software/style and standards."
         },
         {
           title: "Kickoff / initial setup",
-          desc: "1–3 weeks: NDA settled, access setup, playbooks and job checklists."
+          desc: "1–3 weeks: Non-Disclosure Agreement (NDA) settled, access setup, playbooks and job checklists."
         },
         {
           title: "Pilot (up to 3 months)",
-          desc: "Real tests with feedback and adjustments. We validate workflow, quality and communication before scaling."
+          desc: "Real work initiation with feedback and adjustments. We validate workflow, quality, and communication before scaling. Special pricing applies only during this stage; subsequent Production runs at full rates."
         },
         {
           title: "Production",
-          desc: "Operating at full rate with agreed SLAs and regular invoicing; integration typically flows better from month 2–3."
+          desc: "Operating at full rate with agreed Service Level Agreements (SLAs) and monthly invoicing; integration typically flows better from months 2–3."
         },
       ],
     },
     pricing: {
       title: "Pricing – Pilot (up to 3 months)",
-      note: "*Monthly USD invoicing. 'From' rates—may vary with required software and scope.",
+      note: "*Monthly United States dollar (USD) invoicing. 'From' rates—may vary with required software and scope.",
       plans: [
         {
           title: "Drafting – Pilot (up to 3 months)",
@@ -431,7 +431,7 @@ const translations = {
           ],
         },
         {
-          title: "Structures – Pilot (up to 3 months)",
+          title: "Engineering – Pilot (up to 3 months)",
           price: "from $25/h",
           items: [
             "Structural support",
@@ -472,14 +472,14 @@ const translations = {
       name: "Name",
       email: "Email",
       company: "Company / Business",
-      tools: "Software or desired style (AutoCAD, Revit, etc.)",
+      tools: "Software or desired style (AutoCAD, Revit, and others)",
       message: "What you need",
       send: "Send",
       thanks: "Thanks! We’ll get back within 1 business day.",
     },
     footer: {
-      left: "Built in Sonora • Operating from Tucson/HMO.",
-      right: "NDA | Anti-poaching | USD invoicing | Data safeguarded",
+      left: "Built in Sonora • Operating from Tucson and Hermosillo.",
+      right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States dollar (USD) invoicing | Data safeguarded",
     },
   },
 
@@ -490,12 +490,12 @@ const translations = {
       title2: "con capacitación a la medida",
       title3: ", listos para tu backlog",
       subtitle:
-        "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en USD, sin nóminas ni seguros para ti.",
+        "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en dólares estadounidenses (USD), sin nóminas ni seguros para ti.",
       footnote: "Capacitación específica por disciplina y software.",
       bullets: [
         "Relevo rápido en picos de carga (entregables, correcciones/redlines y paquetes de cálculo).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (según licencia del cliente).",
-        "NDA/PIA, cláusulas de no captación de personal (anti-poaching) y control de acceso Zero-Trust.",
+        "Acuerdo de Confidencialidad (NDA) / Acuerdo de Información Propietaria (PIA), cláusulas de no captación de personal (anti‑poaching) y control de acceso Zero‑Trust.",
         "Kickoff de 1–3 semanas con control de calidad (QA) y listas de verificación.",
       ],
     },
@@ -503,14 +503,14 @@ const translations = {
     services: {
       title: "Servicios",
       subtitle:
-        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (p. ej., paisajismo).",
+        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (por ejemplo, paisajismo).",
       cards: [
         {
-          title: "Drafting / BIM",
+          title: "Drafting / Modelado de Información de la Construcción (BIM)",
           items: [
-            "Correcciones (redlines) a planos (Estructural, Arquitectónico, MEP)",
+            "Correcciones (redlines) a planos (Estructural, Arquitectónico, Instalaciones Mecánicas, Eléctricas y de Plomería (MEP))",
             "Dibujo de detalles constructivos",
-            "Modelado en Revit / nivel de detalle (LOD) acordado",
+            "Modelado en Revit / nivel de detalle acordado",
           ],
         },
         {
@@ -525,8 +525,8 @@ const translations = {
           title: "Arquitectura & Paisaje",
           items: [
             "Drafting y asistencia arquitectónica",
-            "Planos de jardín con criterios de riego e iluminación",
-            "Planos y renders 2D para cotización (SketchUp, Enscape/Lumion)",
+            "Planos de jardín incluyendo criterios de riego e iluminación",
+            "Planos y renders bidimensionales para cotización (SketchUp, Enscape/Lumion)",
           ],
         },
       ],
@@ -537,25 +537,25 @@ const translations = {
       steps: [
         {
           title: "Exploración",
-          desc: "Reunión de 30–45 min con el cliente para alinear alcance, software/estilo y estándares."
+          desc: "Reunión de 30–45 minutos con el cliente para alinear alcance, software/estilo y estándares."
         },
         {
           title: "Kickoff / configuración inicial",
-          desc: "1–3 semanas: NDA firmado, accesos, playbooks y listas de verificación de trabajo."
+          desc: "1–3 semanas: Acuerdo de Confidencialidad (NDA) firmado, accesos, playbooks y listas de verificación de trabajo."
         },
         {
           title: "Piloto (hasta 3 meses)",
-          desc: "Pruebas reales con retroalimentación y ajustes. Validamos flujo, calidad y comunicación antes de escalar."
+          desc: "Inicio de trabajo real con retroalimentación y ajustes. Validamos flujo, calidad y comunicación antes de escalar. El precio especial aplica únicamente durante esta etapa; la siguiente etapa (Producción) se factura a tarifa completa."
         },
         {
           title: "Producción",
-          desc: "Operación normal con SLAs acordados y facturación regular; la integración fluye mejor a partir del mes 2–3."
+          desc: "Operación normal con Acuerdos de Nivel de Servicio (SLAs) acordados y facturación mensual; la integración fluye mejor a partir de los meses 2–3."
         },
       ],
     },
     pricing: {
       title: "Precios – Piloto (hasta 3 meses)",
-      note: "*Facturación mensual en USD. Tarifas “desde” — pueden variar por software requerido y alcance.",
+      note: "*Facturación mensual en dólares estadounidenses (USD). Tarifas “desde” — pueden variar por software requerido y alcance.",
       plans: [
         {
           title: "Drafting – Piloto (hasta 3 meses)",
@@ -568,7 +568,7 @@ const translations = {
           ],
         },
         {
-          title: "Estructuras – Piloto (hasta 3 meses)",
+          title: "Ingeniería – Piloto (hasta 3 meses)",
           price: "desde $25/h",
           items: [
             "Apoyo estructural",
@@ -609,14 +609,14 @@ const translations = {
       name: "Nombre",
       email: "Email",
       company: "Empresa / Negocio",
-      tools: "Software o estilo deseado (AutoCAD, Revit, etc.)",
+      tools: "Software o estilo deseado (AutoCAD, Revit y entre otros)",
       message: "Qué necesitas",
       send: "Enviar",
       thanks: "¡Gracias! Te contactamos en 1 día hábil.",
     },
     footer: {
-      left: "Hecho en Sonora • Operamos desde Tucson/HMO.",
-      right: "NDA | Cláusula antipoaching | Facturación en USD | Datos resguardados",
+      left: "Hecho en Sonora • Operamos desde Tucson y Hermosillo.",
+      right: "Acuerdos de Confidencialidad (NDA) | Cláusulas de no captación de personal | Facturación en dólares estadounidenses (USD) | Datos resguardados",
     },
   },
 } as const;
