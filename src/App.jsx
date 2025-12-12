@@ -55,6 +55,7 @@ export default function Home() {
 
   useEffect(() => {
     document.documentElement.lang = lang;
+    document.documentElement.style.scrollBehavior = 'smooth';
   }, [lang]);
 
   useEffect(() => {
@@ -83,10 +84,10 @@ export default function Home() {
             </div>
           </div>
           <nav aria-label="Primary" className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href__="#services" className="text-slate-300 hover:text-blue-400 transition-colors">{t.nav.services}</a>
-            <a href__="#process" className="text-slate-300 hover:text-blue-400 transition-colors">{t.nav.process}</a>
-            <a href__="#pricing" className="text-slate-300 hover:text-blue-400 transition-colors">{t.nav.pricing}</a>
-            <a href__="#contact" className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20">
+            <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+            <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
+            <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+            <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
               {t.nav.quote}
             </a>
             <LanguageSwitcher lang={lang} setLang={setLang} />
@@ -108,10 +109,10 @@ export default function Home() {
         {mobileOpen && (
           <div id="mobile-menu" className="md:hidden border-t border-slate-700/30 bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 py-4 grid gap-3">
-              <a href__="#services" onClick={() => setMobileOpen(false)} className="py-2 text-slate-300 hover:text-blue-400 transition-colors">{t.nav.services}</a>
-              <a href__="#process" onClick={() => setMobileOpen(false)} className="py-2 text-slate-300 hover:text-blue-400 transition-colors">{t.nav.process}</a>
-              <a href__="#pricing" onClick={() => setMobileOpen(false)} className="py-2 text-slate-300 hover:text-blue-400 transition-colors">{t.nav.pricing}</a>
-              <a href__="#contact" onClick={() => setMobileOpen(false)} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center">{t.nav.quote}</a>
+              <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+              <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
+              <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+              <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</a>
               <div className="py-2"><LanguageSwitcher lang={lang} setLang={setLang} /></div>
             </div>
           </div>
@@ -138,10 +139,10 @@ export default function Home() {
               </h1>
               <p className="mt-8 text-lg md:text-xl text-slate-300 leading-relaxed font-light">{t.hero.subtitle}</p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href__="#contact" className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40">
+                <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40 cursor-pointer">
                   {t.cta.meet}
                 </a>
-                <a href__="#services" className="px-8 py-4 rounded-2xl border-2 border-slate-600/60 text-slate-200 hover:bg-slate-800/50 backdrop-blur-sm font-bold transition-all hover:border-slate-500 hover:shadow-lg hover:shadow-slate-700/50">
+                <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl border-2 border-slate-600/60 text-slate-200 hover:bg-slate-800/50 backdrop-blur-sm font-bold transition-all hover:border-slate-500 hover:shadow-lg hover:shadow-slate-700/50 cursor-pointer">
                   {t.cta.learn}
                 </a>
               </div>
@@ -438,9 +439,9 @@ const PricingPlan = memo(function PricingPlan({
   featured
 }) {
   return (
-    <a href__="#contact" className={`relative block ${featured ? 'md:scale-105' : ''} transition-all hover:scale-105 cursor-pointer`}>
+    <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className={`relative block ${featured ? 'md:scale-105' : ''} transition-all hover:scale-105 cursor-pointer select-none`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl transition-opacity hover:opacity-40`}></div>
-      <div className={`relative bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border ${featured ? 'border-blue-500/60' : 'border-slate-700/60'} rounded-3xl p-10 h-full shadow-2xl ring-1 ring-white/5 hover:border-blue-400/80 transition-all`}>
+      <div className={`relative bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border ${featured ? 'border-blue-500/60' : 'border-slate-700/60'} rounded-3xl p-10 h-full shadow-2xl ring-1 ring-white/5 hover:border-blue-400/80 transition-all cursor-pointer`}>
         {featured && (
           <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold shadow-2xl ring-2 ring-blue-400/30">
             POPULAR
