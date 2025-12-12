@@ -356,7 +356,7 @@ export default function App() {
 
               <div className="text-xs text-slate-400 mt-4 text-center">
                 {t.contact.alt}{" "}
-                <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href__="mailto:hello@remotasonora.com">
+                <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href="mailto:hello@remotasonora.com">
                   hello@remotasonora.com
                 </a>
               </div>
