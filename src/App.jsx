@@ -69,7 +69,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-950 text-white">
       {/* Skip link */}
       <a
-        href__="#main"
+        href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-slate-900 border rounded-xl px-4 py-2 shadow-xl z-50"
       >
         {lang === "es" ? "Saltar al contenido" : "Skip to content"}
@@ -87,9 +87,9 @@ export default function Home() {
             </div>
           </div>
           <nav aria-label="Primary" className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
-            <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
-            <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+            <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+            <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
+            <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
             <button onClick={() => setContactModalOpen(true)} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
               {t.nav.quote}
             </button>
@@ -112,9 +112,9 @@ export default function Home() {
         {mobileOpen && (
           <div id="mobile-menu" className="md:hidden border-t border-slate-700/30 bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 py-4 grid gap-3">
-              <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
-              <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
-              <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+              <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+              <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
+              <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
               <button onClick={() => { setContactModalOpen(true); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</button>
               <div className="py-2"><LanguageSwitcher lang={lang} setLang={setLang} /></div>
             </div>
@@ -145,7 +145,7 @@ export default function Home() {
                 <button onClick={() => setContactModalOpen(true)} className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40 cursor-pointer">
                   {t.cta.meet}
                 </button>
-                <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl border-2 border-slate-600/60 text-slate-200 hover:bg-slate-800/50 backdrop-blur-sm font-bold transition-all hover:border-slate-500 hover:shadow-lg hover:shadow-slate-700/50 cursor-pointer">
+                <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl border-2 border-slate-600/60 text-slate-200 hover:bg-slate-800/50 backdrop-blur-sm font-bold transition-all hover:border-slate-500 hover:shadow-lg hover:shadow-slate-700/50 cursor-pointer">
                   {t.cta.learn}
                 </a>
               </div>
@@ -166,7 +166,7 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>,
-                      <svg className="w-6 h-6 text-white transition-transform group-hover:animate-[scale_1s_ease-in-out_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{animation: 'none'}} onMouseEnter={(e) => e.currentTarget.style.animation = 'scale 1s ease-in-out infinite'} onMouseLeave={(e) => e.currentTarget.style.animation = 'none'}>
+                      <svg className="w-6 h-6 text-white group-hover:animate-[scale_1s_ease-in-out_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         <style>
                           {`@keyframes scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }`}
@@ -416,7 +416,7 @@ export default function Home() {
 
                 <div className="text-xs text-slate-400 mt-4 text-center">
                   {t.contact.alt}{" "}
-                  <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href__="mailto:hello@remotasonora.com">
+                  <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href="mailto:hello@remotasonora.com">
                     hello@remotasonora.com
                   </a>
                 </div>
@@ -432,7 +432,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-6 text-sm">
             <div className="space-y-3">
               <div className="text-slate-400">
-                Contact: <a href__="mailto:hello@remotasonora.com" className="text-blue-400 hover:text-cyan-300 transition-colors underline">hello@remotasonora.com</a>
+                Contact: <a href="mailto:hello@remotasonora.com" className="text-blue-400 hover:text-cyan-300 transition-colors underline">hello@remotasonora.com</a>
               </div>
               <div className="flex items-center gap-2 text-slate-400">
                 <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 animate-pulse"></span>
