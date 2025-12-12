@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home.jsx'
-import Privacy from './pages/Privacy.jsx'
-import Terms from './pages/Terms.jsx'
+import Home from './pages/home'
+import Privacy from './pages/privacy'
+import Terms from './pages/terms'
 
 function App() {
   return (
@@ -16,4 +16,3 @@ function App() {
 }
 
 export default App
-
