@@ -21,3 +21,4 @@ npm run build  # genera dist/ para producción
 ## DNS (Porkbun)
 - A @ → 76.76.21.21
 - CNAME www → cname.vercel-dns.com
+
