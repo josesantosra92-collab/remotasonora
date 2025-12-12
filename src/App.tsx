@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, memo } from "react";
+import { useState, useEffect, useMemo, memo, ReactNode } from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
@@ -98,7 +98,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
-      {/* Skip link */}
       <a
         href__="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-slate-900 border rounded-xl px-4 py-2 shadow-xl z-50"
@@ -106,7 +105,6 @@ export default function App() {
         {lang === "es" ? "Saltar al contenido" : "Skip to content"}
       </a>
 
-      {/* HEADER */}
       <header className="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-700/40 shadow-lg shadow-black/50">
         <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -154,9 +152,7 @@ export default function App() {
       </header>
 
       <main id="main" role="main">
-        {/* HERO */}
         <section className="relative overflow-hidden">
-          {/* Decorative background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950 to-blue-900/40"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/25 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-3xl"></div>
@@ -203,7 +199,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* SERVICES */}
         <section id="services" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -236,7 +231,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* PROCESS */}
         <section id="process" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -269,7 +263,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* PRICING */}
         <section id="pricing" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-900 to-slate-950 shadow-inner shadow-black/50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.12),transparent_60%)]"></div>
           <div className="relative max-w-7xl mx-auto px-4 py-24">
@@ -287,7 +280,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* LEGAL / CLIENTS */}
         <section className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-10">
             <InfoCard 
@@ -305,7 +297,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* CONTACT */}
         <section id="contact" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.15),transparent_60%)]"></div>
           <div className="relative max-w-3xl mx-auto px-4 py-24">
@@ -399,7 +390,6 @@ export default function App() {
         </section>
       </main>
 
-      {/* FOOTER */}
       <footer className="border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
         <div className="max-w-7xl mx-auto px-4 py-12 text-sm text-slate-400 grid md:grid-cols-2 gap-6">
           <div className="flex items-center gap-2">
@@ -442,15 +432,7 @@ function LanguageSwitcher({ lang, setLang }: { lang: "en" | "es"; setLang: (lang
   );
 }
 
-const ServiceCard = memo(function ServiceCard({
-  title,
-  children,
-  gradient
-}: {
-  title: string;
-  children: React.ReactNode;
-  gradient: string;
-}) {
+const ServiceCard = memo(function ServiceCard({ title, children, gradient }: { title: string; children: ReactNode; gradient: string }) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
@@ -469,19 +451,7 @@ const ServiceCard = memo(function ServiceCard({
   );
 });
 
-const PricingPlan = memo(function PricingPlan({
-  title,
-  price,
-  note,
-  items,
-  featured
-}: {
-  title: string;
-  price: string;
-  note?: string;
-  items: string[];
-  featured: boolean;
-}) {
+const PricingPlan = memo(function PricingPlan({ title, price, note, items, featured }: { title: string; price: string; note?: string; items: string[]; featured: boolean }) {
   return (
     <div className={`relative ${featured ? 'md:scale-105' : ''}`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl`}></div>
@@ -512,17 +482,7 @@ const PricingPlan = memo(function PricingPlan({
   );
 });
 
-const InfoCard = memo(function InfoCard({
-  title,
-  desc,
-  items,
-  gradient
-}: {
-  title: string;
-  desc: string;
-  items: string[];
-  gradient: string;
-}) {
+const InfoCard = memo(function InfoCard({ title, desc, items, gradient }: { title: string; desc: string; items: string[]; gradient: string }) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
@@ -551,9 +511,6 @@ const InfoCard = memo(function InfoCard({
   );
 });
 
-// =====================================================
-// i18n
-// =====================================================
 const translations = {
   en: {
     nav: { services: "Services", process: "Process", pricing: "Pricing", quote: "Get a quote" },
@@ -561,8 +518,7 @@ const translations = {
       title1: "Engineers, drafters and architects,",
       title2: "with custom training",
       title3: ", ready for your backlog",
-      subtitle:
-        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
+      subtitle: "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
       footnote: "Role-specific training and software alignment.",
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calculation packages).",
@@ -574,8 +530,7 @@ const translations = {
     cta: { meet: "Book a call", learn: "Learn more" },
     services: {
       title: "Services",
-      subtitle:
-        "We serve engineering, general architecture, and also non-technical clients who need design drafting (for example, landscaping).",
+      subtitle: "We serve engineering, general architecture, and also non-technical clients who need design drafting (for example, landscaping).",
       cards: [
         {
           title: "Drafting / Building Information Modeling (BIM)",
@@ -653,8 +608,7 @@ const translations = {
     },
     antipoach: {
       title: "Contracts with anti-poaching",
-      desc:
-        "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
+      desc: "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
       items: [
         "NDA (Non-Disclosure Agreement): confidentiality of shared information",
         "MSA (Master Services Agreement): overarching commercial and legal terms",
@@ -663,8 +617,7 @@ const translations = {
     },
     clients: {
       title: "Who we serve",
-      desc:
-        "Beyond engineering firms, we support businesses and independent architects.",
+      desc: "Beyond engineering firms, we support businesses and independent architects.",
       items: [
         "Structural & architectural engineering firms",
         "General contractors & subcontractors",
@@ -691,15 +644,13 @@ const translations = {
       right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States dollar (USD) invoicing | Data safeguarded",
     },
   },
-
   es: {
     nav: { services: "Servicios", process: "Proceso", pricing: "Precios", quote: "Cotiza" },
     hero: {
       title1: "Ingenieros, drafters y arquitectos,",
       title2: "con capacitación a la medida",
       title3: ", listos para tu backlog",
-      subtitle:
-        "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en dólares estadounidenses (USD), sin nóminas ni seguros para ti.",
+      subtitle: "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en dólares estadounidenses (USD), sin nóminas ni seguros para ti.",
       footnote: "Capacitación específica por disciplina y software.",
       bullets: [
         "Relevo rápido en picos de carga (entregables, correcciones/redlines y paquetes de cálculo).",
@@ -711,8 +662,7 @@ const translations = {
     cta: { meet: "Agenda una llamada", learn: "Conoce más" },
     services: {
       title: "Servicios",
-      subtitle:
-        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (por ejemplo, paisajismo).",
+      subtitle: "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (por ejemplo, paisajismo).",
       cards: [
         {
           title: "Drafting / Modelado de Información de la Construcción (BIM)",
@@ -790,8 +740,7 @@ const translations = {
     },
     antipoach: {
       title: "Contratos con cláusula antipoaching",
-      desc:
-        "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
+      desc: "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
       items: [
         "NDA (Non-Disclosure Agreement): confidencialidad de la información compartida",
         "MSA (Master Services Agreement): términos comerciales y legales generales",
@@ -800,8 +749,7 @@ const translations = {
     },
     clients: {
       title: "Clientes a quienes servimos",
-      desc:
-        "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes.",
+      desc: "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes.",
       items: [
         "Firmas de ingeniería estructural y arquitectónica",
         "Contratistas generales y subcontratistas",
