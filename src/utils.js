@@ -1,8 +1,8 @@
-export const createPageUrl = (pageName) => {
+export function createPageUrl(pageName) {
   const routes = {
     'Home': '/',
     'Privacy': '/privacy',
     'Terms': '/terms'
-  };
-  return routes[pageName] || '/';
-};
+  }
+  return routes[pageName] || '/'
+}
