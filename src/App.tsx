@@ -1,19 +1,55 @@
-import {
-  useState,
-  useEffect,
-  useMemo,
-  memo
-} from "react";
+import { useState, useEffect, useMemo, memo } from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
 // =============================================
 
+interface Translation {
+  nav: { services: string; process: string; pricing: string; quote: string };
+  hero: {
+    title1: string;
+    title2: string;
+    title3: string;
+    subtitle: string;
+    footnote: string;
+    bullets: string[];
+  };
+  cta: { meet: string; learn: string };
+  services: {
+    title: string;
+    subtitle: string;
+    cards: Array<{ title: string; items: string[] }>;
+  };
+  process: {
+    title: string;
+    step: string;
+    steps: Array<{ title: string; desc: string }>;
+  };
+  pricing: {
+    title: string;
+    note: string;
+    plans: Array<{ title: string; price: string; note?: string; items: string[] }>;
+  };
+  antipoach: { title: string; desc: string; items: string[] };
+  clients: { title: string; desc: string; items: string[] };
+  contact: { title: string; subtitle: string; alt: string };
+  form: {
+    name: string;
+    email: string;
+    company: string;
+    tools: string;
+    message: string;
+    send: string;
+    thanks: string;
+  };
+  footer: { left: string; right: string };
+}
+
 function runSelfTests() {
   try {
     const langs = ["en", "es"];
     langs.forEach((lc) => {
-      const t = translations[lc];
+      const t = translations[lc as keyof typeof translations];
       if (!t) throw new Error(`translations[${lc}] missing`);
       const requiredTop = [
         "nav",
@@ -28,8 +64,7 @@ function runSelfTests() {
         "footer",
       ];
       requiredTop.forEach((k) => {
-        // @ts-ignore
-        if (!t[k]) throw new Error(`${lc}.${k} missing`);
+        if (!t[k as keyof Translation]) throw new Error(`${lc}.${k} missing`);
       });
       if (!Array.isArray(t.services.cards) || t.services.cards.length !== 3)
         throw new Error(`${lc}.services.cards must have 3 items`);
@@ -48,8 +83,8 @@ function runSelfTests() {
   }
 }
 
-export default function Home() {
-  const [lang, setLang] = useState("en");
+export default function App() {
+  const [lang, setLang] = useState<"en" | "es">("en");
   const t = useMemo(() => translations[lang] ?? translations.en, [lang]);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -378,7 +413,7 @@ export default function Home() {
   );
 }
 
-function LanguageSwitcher({ lang, setLang }) {
+function LanguageSwitcher({ lang, setLang }: { lang: "en" | "es"; setLang: (lang: "en" | "es") => void }) {
   return (
     <div className="flex items-center gap-1 rounded-xl border border-slate-600/50 bg-slate-900/50 px-1 py-1">
       <button
@@ -411,6 +446,10 @@ const ServiceCard = memo(function ServiceCard({
   title,
   children,
   gradient
+}: {
+  title: string;
+  children: React.ReactNode;
+  gradient: string;
 }) {
   return (
     <div className="relative">
@@ -436,6 +475,12 @@ const PricingPlan = memo(function PricingPlan({
   note,
   items,
   featured
+}: {
+  title: string;
+  price: string;
+  note?: string;
+  items: string[];
+  featured: boolean;
 }) {
   return (
     <div className={`relative ${featured ? 'md:scale-105' : ''}`}>
@@ -472,6 +517,11 @@ const InfoCard = memo(function InfoCard({
   desc,
   items,
   gradient
+}: {
+  title: string;
+  desc: string;
+  items: string[];
+  gradient: string;
 }) {
   return (
     <div className="relative">
