@@ -1,4 +1,10 @@
-import { useState, useEffect, useMemo, memo } from "react";
+
+import {
+  useState,
+  useEffect,
+  useMemo,
+  memo
+} from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
@@ -23,6 +29,7 @@ function runSelfTests() {
         "footer",
       ];
       requiredTop.forEach((k) => {
+        // @ts-ignore
         if (!t[k]) throw new Error(`${lc}.${k} missing`);
       });
       if (!Array.isArray(t.services.cards) || t.services.cards.length !== 3)
@@ -401,7 +408,11 @@ function LanguageSwitcher({ lang, setLang }) {
   );
 }
 
-const ServiceCard = memo(function ServiceCard({ title, children, gradient }) {
+const ServiceCard = memo(function ServiceCard({
+  title,
+  children,
+  gradient
+}) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
@@ -420,7 +431,13 @@ const ServiceCard = memo(function ServiceCard({ title, children, gradient }) {
   );
 });
 
-const PricingPlan = memo(function PricingPlan({ title, price, note, items, featured }) {
+const PricingPlan = memo(function PricingPlan({
+  title,
+  price,
+  note,
+  items,
+  featured
+}) {
   return (
     <div className={`relative ${featured ? 'md:scale-105' : ''}`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl`}></div>
@@ -451,7 +468,12 @@ const PricingPlan = memo(function PricingPlan({ title, price, note, items, featu
   );
 });
 
-const InfoCard = memo(function InfoCard({ title, desc, items, gradient }) {
+const InfoCard = memo(function InfoCard({
+  title,
+  desc,
+  items,
+  gradient
+}) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
@@ -480,6 +502,9 @@ const InfoCard = memo(function InfoCard({ title, desc, items, gradient }) {
   );
 });
 
+// =====================================================
+// i18n
+// =====================================================
 const translations = {
   en: {
     nav: { services: "Services", process: "Process", pricing: "Pricing", quote: "Get a quote" },
@@ -487,7 +512,8 @@ const translations = {
       title1: "Engineers, drafters and architects,",
       title2: "with custom training",
       title3: ", ready for your backlog",
-      subtitle: "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
+      subtitle:
+        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
       footnote: "Role-specific training and software alignment.",
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calculation packages).",
@@ -499,7 +525,8 @@ const translations = {
     cta: { meet: "Book a call", learn: "Learn more" },
     services: {
       title: "Services",
-      subtitle: "We serve engineering, general architecture, and also non-technical clients who need design drafting (for example, landscaping).",
+      subtitle:
+        "We serve engineering, general architecture, and also non-technical clients who need design drafting (for example, landscaping).",
       cards: [
         {
           title: "Drafting / Building Information Modeling (BIM)",
@@ -577,7 +604,8 @@ const translations = {
     },
     antipoach: {
       title: "Contracts with anti-poaching",
-      desc: "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
+      desc:
+        "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
       items: [
         "NDA (Non-Disclosure Agreement): confidentiality of shared information",
         "MSA (Master Services Agreement): overarching commercial and legal terms",
@@ -586,7 +614,8 @@ const translations = {
     },
     clients: {
       title: "Who we serve",
-      desc: "Beyond engineering firms, we support businesses and independent architects.",
+      desc:
+        "Beyond engineering firms, we support businesses and independent architects.",
       items: [
         "Structural & architectural engineering firms",
         "General contractors & subcontractors",
@@ -613,13 +642,15 @@ const translations = {
       right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States dollar (USD) invoicing | Data safeguarded",
     },
   },
+
   es: {
     nav: { services: "Servicios", process: "Proceso", pricing: "Precios", quote: "Cotiza" },
     hero: {
       title1: "Ingenieros, drafters y arquitectos,",
       title2: "con capacitación a la medida",
       title3: ", listos para tu backlog",
-      subtitle: "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en dólares estadounidenses (USD), sin nóminas ni seguros para ti.",
+      subtitle:
+        "Soluciones nearshore para firmas y negocios en EE.UU.: cálculo estructural, apoyo a diseño, drafting, arquitectura en general y diseño de jardines. Facturación mensual en dólares estadounidenses (USD), sin nóminas ni seguros para ti.",
       footnote: "Capacitación específica por disciplina y software.",
       bullets: [
         "Relevo rápido en picos de carga (entregables, correcciones/redlines y paquetes de cálculo).",
@@ -631,7 +662,8 @@ const translations = {
     cta: { meet: "Agenda una llamada", learn: "Conoce más" },
     services: {
       title: "Servicios",
-      subtitle: "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (por ejemplo, paisajismo).",
+      subtitle:
+        "Cubrimos ingeniería, arquitectura en general y también clientes no técnicos que requieren dibujo técnico de diseño (por ejemplo, paisajismo).",
       cards: [
         {
           title: "Drafting / Modelado de Información de la Construcción (BIM)",
@@ -709,7 +741,8 @@ const translations = {
     },
     antipoach: {
       title: "Contratos con cláusula antipoaching",
-      desc: "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
+      desc:
+        "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
       items: [
         "NDA (Non-Disclosure Agreement): confidencialidad de la información compartida",
         "MSA (Master Services Agreement): términos comerciales y legales generales",
@@ -718,7 +751,8 @@ const translations = {
     },
     clients: {
       title: "Clientes a quienes servimos",
-      desc: "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes.",
+      desc:
+        "Además de firmas de ingeniería y arquitectura, apoyamos a negocios y a arquitectos independientes.",
       items: [
         "Firmas de ingeniería estructural y arquitectónica",
         "Contratistas generales y subcontratistas",
