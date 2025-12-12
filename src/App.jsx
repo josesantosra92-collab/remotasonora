@@ -1,55 +1,14 @@
-import { useState, useEffect, useMemo, memo, ReactNode } from "react";
+import { useState, useEffect, useMemo, memo } from "react";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
 // =============================================
 
-interface Translation {
-  nav: { services: string; process: string; pricing: string; quote: string };
-  hero: {
-    title1: string;
-    title2: string;
-    title3: string;
-    subtitle: string;
-    footnote: string;
-    bullets: string[];
-  };
-  cta: { meet: string; learn: string };
-  services: {
-    title: string;
-    subtitle: string;
-    cards: Array<{ title: string; items: string[] }>;
-  };
-  process: {
-    title: string;
-    step: string;
-    steps: Array<{ title: string; desc: string }>;
-  };
-  pricing: {
-    title: string;
-    note: string;
-    plans: Array<{ title: string; price: string; note?: string; items: string[] }>;
-  };
-  antipoach: { title: string; desc: string; items: string[] };
-  clients: { title: string; desc: string; items: string[] };
-  contact: { title: string; subtitle: string; alt: string };
-  form: {
-    name: string;
-    email: string;
-    company: string;
-    tools: string;
-    message: string;
-    send: string;
-    thanks: string;
-  };
-  footer: { left: string; right: string };
-}
-
 function runSelfTests() {
   try {
     const langs = ["en", "es"];
     langs.forEach((lc) => {
-      const t = translations[lc as keyof typeof translations];
+      const t = translations[lc];
       if (!t) throw new Error(`translations[${lc}] missing`);
       const requiredTop = [
         "nav",
@@ -64,7 +23,7 @@ function runSelfTests() {
         "footer",
       ];
       requiredTop.forEach((k) => {
-        if (!t[k as keyof Translation]) throw new Error(`${lc}.${k} missing`);
+        if (!t[k]) throw new Error(`${lc}.${k} missing`);
       });
       if (!Array.isArray(t.services.cards) || t.services.cards.length !== 3)
         throw new Error(`${lc}.services.cards must have 3 items`);
@@ -84,7 +43,7 @@ function runSelfTests() {
 }
 
 export default function App() {
-  const [lang, setLang] = useState<"en" | "es">("en");
+  const [lang, setLang] = useState("en");
   const t = useMemo(() => translations[lang] ?? translations.en, [lang]);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -98,6 +57,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
+      {/* Skip link */}
       <a
         href__="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-white text-slate-900 border rounded-xl px-4 py-2 shadow-xl z-50"
@@ -105,6 +65,7 @@ export default function App() {
         {lang === "es" ? "Saltar al contenido" : "Skip to content"}
       </a>
 
+      {/* HEADER */}
       <header className="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-700/40 shadow-lg shadow-black/50">
         <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -152,7 +113,9 @@ export default function App() {
       </header>
 
       <main id="main" role="main">
+        {/* HERO */}
         <section className="relative overflow-hidden">
+          {/* Decorative background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950 to-blue-900/40"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/25 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-3xl"></div>
@@ -199,6 +162,7 @@ export default function App() {
           </div>
         </section>
 
+        {/* SERVICES */}
         <section id="services" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -231,6 +195,7 @@ export default function App() {
           </div>
         </section>
 
+        {/* PROCESS */}
         <section id="process" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -263,6 +228,7 @@ export default function App() {
           </div>
         </section>
 
+        {/* PRICING */}
         <section id="pricing" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-900 to-slate-950 shadow-inner shadow-black/50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.12),transparent_60%)]"></div>
           <div className="relative max-w-7xl mx-auto px-4 py-24">
@@ -280,6 +246,7 @@ export default function App() {
           </div>
         </section>
 
+        {/* LEGAL / CLIENTS */}
         <section className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
           <div className="max-w-7xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-10">
             <InfoCard 
@@ -297,6 +264,7 @@ export default function App() {
           </div>
         </section>
 
+        {/* CONTACT */}
         <section id="contact" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.15),transparent_60%)]"></div>
           <div className="relative max-w-3xl mx-auto px-4 py-24">
@@ -390,6 +358,7 @@ export default function App() {
         </section>
       </main>
 
+      {/* FOOTER */}
       <footer className="border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
         <div className="max-w-7xl mx-auto px-4 py-12 text-sm text-slate-400 grid md:grid-cols-2 gap-6">
           <div className="flex items-center gap-2">
@@ -403,7 +372,7 @@ export default function App() {
   );
 }
 
-function LanguageSwitcher({ lang, setLang }: { lang: "en" | "es"; setLang: (lang: "en" | "es") => void }) {
+function LanguageSwitcher({ lang, setLang }) {
   return (
     <div className="flex items-center gap-1 rounded-xl border border-slate-600/50 bg-slate-900/50 px-1 py-1">
       <button
@@ -432,7 +401,7 @@ function LanguageSwitcher({ lang, setLang }: { lang: "en" | "es"; setLang: (lang
   );
 }
 
-const ServiceCard = memo(function ServiceCard({ title, children, gradient }: { title: string; children: ReactNode; gradient: string }) {
+const ServiceCard = memo(function ServiceCard({ title, children, gradient }) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
@@ -451,7 +420,7 @@ const ServiceCard = memo(function ServiceCard({ title, children, gradient }: { t
   );
 });
 
-const PricingPlan = memo(function PricingPlan({ title, price, note, items, featured }: { title: string; price: string; note?: string; items: string[]; featured: boolean }) {
+const PricingPlan = memo(function PricingPlan({ title, price, note, items, featured }) {
   return (
     <div className={`relative ${featured ? 'md:scale-105' : ''}`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl`}></div>
@@ -482,7 +451,7 @@ const PricingPlan = memo(function PricingPlan({ title, price, note, items, featu
   );
 });
 
-const InfoCard = memo(function InfoCard({ title, desc, items, gradient }: { title: string; desc: string; items: string[]; gradient: string }) {
+const InfoCard = memo(function InfoCard({ title, desc, items, gradient }) {
   return (
     <div className="relative">
       <div className={`absolute -inset-2 bg-gradient-to-r ${gradient} opacity-20 rounded-3xl blur-2xl`}></div>
