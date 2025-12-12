@@ -4,6 +4,8 @@ import {
   useMemo,
   memo
 } from "react";
+import { Link } from "react-router-dom";
+import { createPageUrl } from "@/utils";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
@@ -444,20 +446,18 @@ export default function Home() {
               >
                 {t.footer.backToTop}
               </button>
-              <a 
-                href__="/privacy" 
-                onClick={(e) => { e.preventDefault(); window.location.href = '/privacy'; }}
+              <Link 
+                to={createPageUrl("Privacy")}
                 className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
               >
                 {t.footer.privacy}
-              </a>
-              <a 
-                href__="/terms" 
-                onClick={(e) => { e.preventDefault(); window.location.href = '/terms'; }}
+              </Link>
+              <Link 
+                to={createPageUrl("Terms")}
                 className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
               >
                 {t.footer.terms}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
