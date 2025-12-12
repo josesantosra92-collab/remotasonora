@@ -52,6 +52,7 @@ export default function Home() {
   const [lang, setLang] = useState("en");
   const t = useMemo(() => translations[lang] ?? translations.en, [lang]);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -87,9 +88,9 @@ export default function Home() {
             <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
             <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
             <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
-            <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
+            <button onClick={() => setContactModalOpen(true)} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
               {t.nav.quote}
-            </a>
+            </button>
             <LanguageSwitcher lang={lang} setLang={setLang} />
           </nav>
           <button
@@ -112,7 +113,7 @@ export default function Home() {
               <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
               <a href__="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
               <a href__="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
-              <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</a>
+              <button onClick={() => { setContactModalOpen(true); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</button>
               <div className="py-2"><LanguageSwitcher lang={lang} setLang={setLang} /></div>
             </div>
           </div>
@@ -139,9 +140,9 @@ export default function Home() {
               </h1>
               <p className="mt-8 text-lg md:text-xl text-slate-300 leading-relaxed font-light">{t.hero.subtitle}</p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40 cursor-pointer">
+                <button onClick={() => setContactModalOpen(true)} className="px-8 py-4 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40 cursor-pointer">
                   {t.cta.meet}
-                </a>
+                </button>
                 <a href__="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="px-8 py-4 rounded-2xl border-2 border-slate-600/60 text-slate-200 hover:bg-slate-800/50 backdrop-blur-sm font-bold transition-all hover:border-slate-500 hover:shadow-lg hover:shadow-slate-700/50 cursor-pointer">
                   {t.cta.learn}
                 </a>
@@ -156,17 +157,22 @@ export default function Home() {
                   {t.hero.bullets.map((b, i) => {
                     const bulletIcons = [
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" className="group-hover:animate-spin origin-center" style={{transformOrigin: '12px 12px'}} />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>,
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white group-hover:animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>,
-                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-white transition-transform group-hover:animate-[scale_1s_ease-in-out_infinite]" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{animation: 'none'}} onMouseEnter={(e) => e.currentTarget.style.animation = 'scale 1s ease-in-out infinite'} onMouseLeave={(e) => e.currentTarget.style.animation = 'none'}>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        <style>
+                          {`@keyframes scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }`}
+                        </style>
                       </svg>,
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        <path className="group-hover:animate-bounce" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 14l2 2 4-4" />
                       </svg>
                     ];
                     const gradients = [
@@ -183,7 +189,7 @@ export default function Home() {
                     ];
                     return (
                       <li key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-800/30 transition-all">
-                        <span className={`h-12 w-12 rounded-xl bg-gradient-to-br ${gradients[i]} flex items-center justify-center flex-shrink-0 shadow-xl ${shadows[i]} ring-2 ring-white/20 hover:scale-110 transition-transform`}>
+                        <span className={`group h-12 w-12 rounded-xl bg-gradient-to-br ${gradients[i]} flex items-center justify-center flex-shrink-0 shadow-xl ${shadows[i]} ring-2 ring-white/20 hover:scale-110 transition-transform`}>
                           {bulletIcons[i]}
                         </span>
                         <span className="text-slate-200 leading-relaxed font-light">{b}</span>
@@ -284,7 +290,7 @@ export default function Home() {
             </div>
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {t.pricing.plans.map((p, i) => (
-                <PricingPlan key={i} title={p.title} price={p.price} note={p.note} items={p.items} featured={i === 1} />
+                <PricingPlan key={i} title={p.title} price={p.price} note={p.note} items={p.items} featured={i === 1} onClick={() => setContactModalOpen(true)} />
               ))}
             </div>
             <p className="mt-8 text-center text-sm text-slate-400">{t.pricing.note}</p>
@@ -308,109 +314,152 @@ export default function Home() {
             />
           </div>
         </section>
+      </main>
 
-        {/* CONTACT */}
-        <section id="contact" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(6,182,212,0.15),transparent_60%)]"></div>
-          <div className="relative max-w-3xl mx-auto px-4 py-24">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
-                {t.contact.title}
-              </h2>
-              <p className="mt-6 text-xl text-slate-300 font-light">{t.contact.subtitle}</p>
-            </div>
-
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                const form = e.currentTarget;
-                const data = new FormData(form);
-                const res = await fetch(form.action, {
-                  method: form.method,
-                  body: data,
-                  headers: { Accept: "application/json" },
-                });
-                if (res.ok) {
-                  form.reset();
-                  const thank = document.getElementById("thankMessage");
-                  if (thank) thank.classList.remove("hidden");
-                }
-              }}
-              action="https://formspree.io/f/xqayypvw"
-              method="POST"
-              acceptCharset="UTF-8"
-              className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-2xl border border-slate-700/60 rounded-3xl p-10 shadow-2xl ring-1 ring-white/5"
+      {/* CONTACT MODAL */}
+      {contactModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={() => setContactModalOpen(false)}
+          ></div>
+          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl border border-slate-700/60 shadow-2xl">
+            <button
+              onClick={() => setContactModalOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors z-10"
             >
-              <div className="grid md:grid-cols-2 gap-4">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <div className="p-8 md:p-10">
+              <div className="text-center mb-8">
+                <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+                  {t.contact.title}
+                </h2>
+                <p className="mt-4 text-lg text-slate-300 font-light">{t.contact.subtitle}</p>
+              </div>
+
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  const data = new FormData(form);
+                  const res = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { Accept: "application/json" },
+                  });
+                  if (res.ok) {
+                    form.reset();
+                    const thank = document.getElementById("thankMessageModal");
+                    if (thank) thank.classList.remove("hidden");
+                  }
+                }}
+                action="https://formspree.io/f/xqayypvw"
+                method="POST"
+                acceptCharset="UTF-8"
+              >
+                <div className="grid md:grid-cols-2 gap-4">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    placeholder={t.form.name} 
+                    required 
+                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  />
+                  <input 
+                    type="email" 
+                    name="email" 
+                    placeholder={t.form.email} 
+                    required 
+                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  />
+                </div>
+
                 <input 
                   type="text" 
-                  name="name" 
-                  placeholder={t.form.name} 
-                  required 
-                  className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  name="company" 
+                  placeholder={t.form.company} 
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
                 />
                 <input 
-                  type="email" 
-                  name="email" 
-                  placeholder={t.form.email} 
-                  required 
-                  className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                  type="text" 
+                  name="tools" 
+                  placeholder={t.form.tools} 
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
                 />
-              </div>
 
-              <input 
-                type="text" 
-                name="company" 
-                placeholder={t.form.company} 
-                className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
-              />
-              <input 
-                type="text" 
-                name="tools" 
-                placeholder={t.form.tools} 
-                className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
-              />
+                <textarea 
+                  name="message" 
+                  placeholder={t.form.message} 
+                  required 
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl h-32 mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                ></textarea>
 
-              <textarea 
-                name="message" 
-                placeholder={t.form.message} 
-                required 
-                className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl h-32 mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
-              ></textarea>
+                <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
+                <input type="text" name="_gotcha" style={{ display: "none" }} />
 
-              <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
-              <input type="text" name="_gotcha" style={{ display: "none" }} />
+                <button 
+                  type="submit" 
+                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold mt-6 w-full shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40"
+                >
+                  {t.form.send}
+                </button>
 
-              <button 
-                type="submit" 
-                className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold mt-8 w-full shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40"
-              >
-                {t.form.send}
-              </button>
+                <div id="thankMessageModal" className="hidden mt-6 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 text-green-300 rounded-2xl text-center font-semibold">
+                  {t.form.thanks}
+                </div>
 
-              <div id="thankMessage" className="hidden mt-6 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 text-green-300 rounded-2xl text-center font-semibold">
-                {t.form.thanks}
-              </div>
-
-              <div className="text-xs text-slate-400 mt-4 text-center">
-                {t.contact.alt}{" "}
-                <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href__="mailto:hello@remotasonora.com">
-                  hello@remotasonora.com
-                </a>
-              </div>
-            </form>
+                <div className="text-xs text-slate-400 mt-4 text-center">
+                  {t.contact.alt}{" "}
+                  <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href__="mailto:hello@remotasonora.com">
+                    hello@remotasonora.com
+                  </a>
+                </div>
+              </form>
+            </div>
           </div>
-        </section>
-      </main>
+        </div>
+      )}
 
       {/* FOOTER */}
       <footer className="border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
-        <div className="max-w-7xl mx-auto px-4 py-12 text-sm text-slate-400 grid md:grid-cols-2 gap-6">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 animate-pulse"></span>
-            © {new Date().getFullYear()} Remota Sonora. {t.footer.left}
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid md:grid-cols-2 gap-6 text-sm">
+            <div className="space-y-3">
+              <div className="text-slate-400">
+                Contact: <a href__="mailto:hello@remotasonora.com" className="text-blue-400 hover:text-cyan-300 transition-colors underline">hello@remotasonora.com</a>
+              </div>
+              <div className="flex items-center gap-2 text-slate-400">
+                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 animate-pulse"></span>
+                © {new Date().getFullYear()} Remota Sonora. {t.footer.left}
+              </div>
+            </div>
+            <div className="md:text-right space-y-3">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
+              >
+                {t.footer.backToTop}
+              </button>
+              <a 
+                href__="/privacy" 
+                onClick={(e) => { e.preventDefault(); window.location.href = '/privacy'; }}
+                className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
+              >
+                {t.footer.privacy}
+              </a>
+              <a 
+                href__="/terms" 
+                onClick={(e) => { e.preventDefault(); window.location.href = '/terms'; }}
+                className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
+              >
+                {t.footer.terms}
+              </a>
+            </div>
           </div>
-          <div className="md:text-right text-slate-500">{t.footer.right}</div>
         </div>
       </footer>
     </div>
@@ -473,10 +522,11 @@ const PricingPlan = memo(function PricingPlan({
   price,
   note,
   items,
-  featured
+  featured,
+  onClick
 }) {
   return (
-    <a href__="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }} className={`relative block ${featured ? 'md:scale-105' : ''} transition-all hover:scale-105 cursor-pointer select-none`}>
+    <button onClick={onClick} className={`relative block w-full text-left ${featured ? 'md:scale-105' : ''} transition-all ${featured ? 'hover:scale-110' : 'hover:scale-105'} cursor-pointer select-none`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl transition-opacity hover:opacity-40`}></div>
       <div className={`relative bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border ${featured ? 'border-blue-500/60' : 'border-slate-700/60'} rounded-3xl p-10 h-full shadow-2xl ring-1 ring-white/5 hover:border-blue-400/80 transition-all cursor-pointer`}>
         {featured && (
@@ -501,7 +551,7 @@ const PricingPlan = memo(function PricingPlan({
           ))}
         </ul>
       </div>
-    </a>
+    </button>
   );
 });
 
@@ -677,6 +727,9 @@ const translations = {
     footer: {
       left: "Built in Sonora • Operating from Tucson and Hermosillo.",
       right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States dollar (USD) invoicing | Data safeguarded",
+      backToTop: "Back to Top",
+      privacy: "Privacy Policy",
+      terms: "Terms & Conditions",
     },
   },
 
@@ -814,6 +867,9 @@ const translations = {
     footer: {
       left: "Hecho en Sonora • Operamos desde Tucson y Hermosillo.",
       right: "Acuerdos de Confidencialidad (NDA) | Cláusulas de no captación de personal | Facturación en dólares estadounidenses (USD) | Datos resguardados",
+      backToTop: "Volver Arriba",
+      privacy: "Políticas de Privacidad",
+      terms: "Términos y Condiciones",
     },
   },
 };
