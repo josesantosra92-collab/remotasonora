@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import { createPageUrl } from "@/utils";
 
 export default function Privacy() {
   const [lang, setLang] = useState("en");
@@ -34,6 +34,26 @@ export default function Privacy() {
           content: "You have the right to access, correct, or delete your personal information at any time. To exercise these rights, please contact us at hello@remotasonora.com."
         },
         {
+          title: "Cookies and Tracking Technologies",
+          content: "Our website may use basic cookies or analytics tools to improve functionality and understand website traffic. You can disable cookies in your browser settings at any time."
+        },
+        {
+          title: "Server Location",
+          content: "Our website is hosted on secure servers in the United States."
+        },
+        {
+          title: "Data Retention",
+          content: "We retain your information only for as long as necessary to provide our services or comply with legal obligations."
+        },
+        {
+          title: "Data Controller",
+          content: "Remota Sonora acts as the Data Controller for all information collected through this website."
+        },
+        {
+          title: "External Links",
+          content: "Our website may contain links to third-party websites. We are not responsible for their privacy practices and encourage you to review their policies."
+        },
+        {
           title: "Non-Disclosure Agreements",
           content: "All client projects are protected under Non-Disclosure Agreements (NDAs). We maintain strict confidentiality of all project information and data."
         },
@@ -62,6 +82,26 @@ export default function Privacy() {
         {
           title: "Tus Derechos",
           content: "Tienes derecho a acceder, corregir o eliminar tu información personal en cualquier momento. Para ejercer estos derechos, contáctanos en hello@remotasonora.com."
+        },
+        {
+          title: "Cookies y Tecnologías de Seguimiento",
+          content: "Nuestro sitio web puede usar cookies básicas o herramientas de análisis para mejorar la funcionalidad y comprender el tráfico del sitio web. Puedes desactivar las cookies en la configuración de tu navegador en cualquier momento."
+        },
+        {
+          title: "Ubicación del Servidor",
+          content: "Nuestro sitio web está alojado en servidores seguros en los Estados Unidos."
+        },
+        {
+          title: "Plazo de Conservación de Datos",
+          content: "Conservamos tu información solo el tiempo necesario para proporcionar nuestros servicios o cumplir con obligaciones legales."
+        },
+        {
+          title: "Responsable de Datos",
+          content: "Remota Sonora actúa como Responsable de Datos para toda la información recopilada a través de este sitio web."
+        },
+        {
+          title: "Enlaces Externos",
+          content: "Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de sus prácticas de privacidad y te alentamos a revisar sus políticas."
         },
         {
           title: "Acuerdos de Confidencialidad",
