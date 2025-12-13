@@ -1,6 +1,15 @@
-import { useState, useEffect, useMemo, memo } from "react";
+import {
+  useState,
+  useEffect,
+  useMemo,
+  memo
+} from "react";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import { createPageUrl } from "@/utils";
+
+// =============================================
+// Landing page bilingüe (EN/ES) - Bold & Contemporary Design
+// =============================================
 
 function runSelfTests() {
   try {
@@ -21,6 +30,7 @@ function runSelfTests() {
         "footer",
       ];
       requiredTop.forEach((k) => {
+        // @ts-ignore
         if (!t[k]) throw new Error(`${lc}.${k} missing`);
       });
       if (!Array.isArray(t.services.cards) || t.services.cards.length !== 3)
@@ -115,6 +125,7 @@ export default function Home() {
       <main id="main" role="main">
         {/* HERO */}
         <section className="relative overflow-hidden">
+          {/* Decorative background */}
           <div className="absolute inset-0 bg-gradient-to-br from-slate-900/70 via-slate-950 to-blue-900/40"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/25 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/20 rounded-full blur-3xl"></div>
@@ -194,7 +205,7 @@ export default function Home() {
         </section>
 
         {/* SERVICES */}
-        <section id="services" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50">
+        <section id="services" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-950 to-slate-900 shadow-inner shadow-black/50" style={{ scrollMarginTop: '12vh' }}>
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
@@ -238,7 +249,7 @@ export default function Home() {
         </section>
 
         {/* PROCESS */}
-        <section id="process" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
+        <section id="process" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50" style={{ scrollMarginTop: '18vh' }}>
           <div className="max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
               <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
@@ -271,7 +282,7 @@ export default function Home() {
         </section>
 
         {/* PRICING */}
-        <section id="pricing" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-900 to-slate-950 shadow-inner shadow-black/50">
+        <section id="pricing" className="relative border-t border-slate-700/40 bg-gradient-to-b from-slate-900 to-slate-950 shadow-inner shadow-black/50" style={{ scrollMarginTop: '8vh' }}>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(59,130,246,0.12),transparent_60%)]"></div>
           <div className="relative max-w-7xl mx-auto px-4 py-24">
             <div className="text-center max-w-3xl mx-auto mb-20">
@@ -405,7 +416,7 @@ export default function Home() {
 
                 <div className="text-xs text-slate-400 mt-4 text-center">
                   {t.contact.alt}{" "}
-                  <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href__="mailto:hello@remotasonora.com">
+                  <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href="mailto:hello@remotasonora.com">
                     hello@remotasonora.com
                   </a>
                 </div>
@@ -578,6 +589,9 @@ const InfoCard = memo(function InfoCard({
   );
 });
 
+// =====================================================
+// i18n
+// =====================================================
 const translations = {
   en: {
     nav: { services: "Services", process: "Process", pricing: "Pricing", quote: "Get a quote" },
