@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "../utils";
+import { createPageUrl } from "@/utils";
 
 export default function Terms() {
   const [lang, setLang] = useState("en");
@@ -27,7 +27,7 @@ export default function Terms() {
         },
         {
           title: "Invoicing and Payment",
-          content: "Services are billed monthly in United States dollars (USD). Payment terms are Net 30 unless otherwise agreed in writing. Late payments may be subject to interest charges."
+          content: "Services are billed monthly in United States dollars (USD). Payment terms are Net 15 unless otherwise agreed in writing. Late payments may be subject to interest charges."
         },
         {
           title: "Confidentiality and Non-Disclosure",
@@ -50,8 +50,28 @@ export default function Terms() {
           content: "Production phase services include agreed Service Level Agreements (SLAs) for communication response times, deliverable turnaround, and quality standards."
         },
         {
+          title: "Scope & Change Orders",
+          content: "Any work outside the agreed scope will require a written Change Order, including revised fees and timelines. This ensures clear expectations and fair compensation for additional work requested by the client."
+        },
+        {
+          title: "Engineering Responsibility",
+          content: "Remota Sonora provides drafting and engineering support only. We do not act as Engineer of Record (EOR) unless explicitly stated in a separate agreement. All final engineering responsibility remains with the client's licensed professional."
+        },
+        {
+          title: "No Warranty",
+          content: "Services are provided on a best-effort basis without warranties beyond those expressly stated in the MSA or SOW. We maintain professional standards and quality control processes for all deliverables."
+        },
+        {
+          title: "Independent Contractor Status",
+          content: "Our staff operates as independent contractors and are not employees of the client. We maintain full responsibility for our team's payroll, benefits, and work conditions."
+        },
+        {
           title: "Limitation of Liability",
           content: "Our liability is limited to the fees paid for the specific services in question. We maintain professional liability insurance for engineering services."
+        },
+        {
+          title: "Governing Law",
+          content: "These Terms & Conditions are governed by the laws of the State of Arizona, USA. Any disputes will be resolved in the appropriate courts of Arizona."
         },
         {
           title: "Termination",
@@ -77,7 +97,7 @@ export default function Terms() {
         },
         {
           title: "Facturación y Pago",
-          content: "Los servicios se facturan mensualmente en dólares estadounidenses (USD). Los términos de pago son Net 30 a menos que se acuerde lo contrario por escrito. Los pagos tardíos pueden estar sujetos a cargos por intereses."
+          content: "Los servicios se facturan mensualmente en dólares estadounidenses (USD). Los términos de pago son Net 15 a menos que se acuerde lo contrario por escrito. Los pagos tardíos pueden estar sujetos a cargos por intereses."
         },
         {
           title: "Confidencialidad y No Divulgación",
@@ -100,8 +120,28 @@ export default function Terms() {
           content: "Los servicios en fase de producción incluyen Acuerdos de Nivel de Servicio (SLA) acordados para tiempos de respuesta de comunicación, entrega de entregables y estándares de calidad."
         },
         {
+          title: "Alcance y Órdenes de Cambio",
+          content: "Cualquier trabajo fuera del alcance acordado requerirá una Orden de Cambio por escrito, incluyendo tarifas y plazos revisados. Esto asegura expectativas claras y compensación justa por el trabajo adicional solicitado por el cliente."
+        },
+        {
+          title: "Responsabilidad de Ingeniería",
+          content: "Remota Sonora proporciona drafting y apoyo de ingeniería únicamente. No actuamos como Ingeniero Responsable (EOR) a menos que se indique explícitamente en un acuerdo separado. Toda la responsabilidad final de ingeniería permanece con el profesional licenciado del cliente."
+        },
+        {
+          title: "Sin Garantía",
+          content: "Los servicios se proporcionan de buena fe sin garantías más allá de las expresamente establecidas en el MSA o SOW. Mantenemos estándares profesionales y procesos de control de calidad para todos los entregables."
+        },
+        {
+          title: "Estado de Contratista Independiente",
+          content: "Nuestro personal opera como contratistas independientes y no son empleados del cliente. Mantenemos total responsabilidad por la nómina, beneficios y condiciones de trabajo de nuestro equipo."
+        },
+        {
           title: "Limitación de Responsabilidad",
           content: "Nuestra responsabilidad está limitada a las tarifas pagadas por los servicios específicos en cuestión. Mantenemos un seguro de responsabilidad profesional para servicios de ingeniería."
+        },
+        {
+          title: "Ley Aplicable",
+          content: "Estos Términos y Condiciones se rigen por las leyes del Estado de Arizona, EE.UU. Cualquier disputa se resolverá en los tribunales apropiados de Arizona."
         },
         {
           title: "Terminación",
