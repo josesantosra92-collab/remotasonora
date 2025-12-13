@@ -290,7 +290,7 @@ export default function Home() {
                 {t.pricing.title}
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
               {t.pricing.plans.map((p, i) => (
                 <PricingPlan key={i} title={p.title} price={p.price} note={p.note} items={p.items} featured={i === 1} onClick={() => setContactModalOpen(true)} />
               ))}
@@ -528,25 +528,25 @@ const PricingPlan = memo(function PricingPlan({
   return (
     <button onClick={onClick} className={`relative block w-full text-left ${featured ? 'md:scale-105' : ''} transition-all ${featured ? 'hover:scale-110' : 'hover:scale-105'} cursor-pointer select-none`}>
       <div className={`absolute -inset-3 bg-gradient-to-r ${featured ? 'from-blue-600 to-cyan-600' : 'from-slate-600 to-blue-600'} opacity-25 rounded-3xl blur-2xl transition-opacity hover:opacity-40`}></div>
-      <div className={`relative bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border ${featured ? 'border-blue-500/60' : 'border-slate-700/60'} rounded-3xl p-10 h-full shadow-2xl ring-1 ring-white/5 hover:border-blue-400/80 transition-all cursor-pointer`}>
+      <div className={`relative bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border ${featured ? 'border-blue-500/60' : 'border-slate-700/60'} rounded-3xl p-6 md:p-8 lg:p-10 h-full shadow-2xl ring-1 ring-white/5 hover:border-blue-400/80 transition-all cursor-pointer`}>
         {featured && (
           <div className="absolute -top-5 left-1/2 -translate-x-1/2 px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-xs font-bold shadow-2xl ring-2 ring-blue-400/30">
             POPULAR
           </div>
         )}
         <div className="text-xs text-slate-500 uppercase tracking-wider font-bold">Plan</div>
-        <div className="font-black text-2xl text-white mt-3 tracking-tight">{title}</div>
-        <div className="mt-5 text-6xl font-black bg-gradient-to-r from-blue-300 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg">
+        <div className="font-black text-xl md:text-2xl text-white mt-3 tracking-tight">{title}</div>
+        <div className="mt-5 text-4xl md:text-5xl lg:text-6xl font-black bg-gradient-to-r from-blue-300 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg">
           {price}
         </div>
         {note && <div className="text-xs text-slate-400 mt-3 font-light">{note}</div>}
         <ul className="mt-8 space-y-4">
           {items.map((it, i) => (
             <li key={i} className="flex items-start gap-3 text-slate-300">
-              <svg className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 md:w-5 md:h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              <span className="text-sm font-light">{it}</span>
+              <span className="text-xs md:text-sm font-light">{it}</span>
             </li>
           ))}
         </ul>
