@@ -62,6 +62,17 @@ export default function Home() {
   }, [lang]);
 
   useEffect(() => {
+    if (contactModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [contactModalOpen]);
+
+  useEffect(() => {
     if (typeof window !== "undefined") runSelfTests();
   }, []);
 
@@ -320,12 +331,13 @@ export default function Home() {
 
       {/* CONTACT MODAL */}
       {contactModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden">
           <div 
             className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setContactModalOpen(false)}
           ></div>
-          <div className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl border border-slate-700/60 shadow-2xl">
+          <div className="relative w-full h-full sm:w-auto sm:h-auto sm:max-w-2xl sm:max-h-[95vh] bg-gradient-to-br from-slate-900 to-slate-800 sm:rounded-2xl md:rounded-3xl border-0 sm:border border-slate-700/60 shadow-2xl overflow-hidden">
+            <div className="h-full overflow-y-auto scrollbar-hide" style={{WebkitOverflowScrolling: 'touch'}}>
             <button
               onClick={() => setContactModalOpen(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors z-10"
@@ -335,12 +347,12 @@ export default function Home() {
               </svg>
             </button>
             
-            <div className="p-8 md:p-10">
-              <div className="text-center mb-8">
-                <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+            <div className="p-4 sm:p-6 md:p-8 lg:p-10">
+              <div className="text-center mb-6 sm:mb-8">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
                   {t.contact.title}
                 </h2>
-                <p className="mt-4 text-lg text-slate-300 font-light">{t.contact.subtitle}</p>
+                <p className="mt-3 sm:mt-4 text-base sm:text-lg text-slate-300 font-light">{t.contact.subtitle}</p>
               </div>
 
               <form
@@ -363,20 +375,20 @@ export default function Home() {
                 method="POST"
                 acceptCharset="UTF-8"
               >
-                <div className="grid md:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                   <input 
                     type="text" 
                     name="name" 
                     placeholder={t.form.name} 
                     required 
-                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   />
                   <input 
                     type="email" 
                     name="email" 
                     placeholder={t.form.email} 
                     required 
-                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-4 py-3 rounded-xl focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
+                    className="w-full bg-slate-800/50 border border-slate-600/50 text-white placeholder-slate-400 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl text-sm sm:text-base focus:outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-500/20 transition-all"
                   />
                 </div>
 
@@ -384,20 +396,20 @@ export default function Home() {
                   type="text" 
                   name="company" 
                   placeholder={t.form.company} 
-                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl mt-3 sm:mt-4 text-sm sm:text-base focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
                 />
                 <input 
                   type="text" 
                   name="tools" 
                   placeholder={t.form.tools} 
-                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl mt-3 sm:mt-4 text-sm sm:text-base focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all"
                 />
 
                 <textarea 
                   name="message" 
                   placeholder={t.form.message} 
                   required 
-                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-4 py-3 rounded-xl h-32 mt-4 focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                  className="w-full bg-slate-800/50 border border-purple-500/30 text-white placeholder-slate-400 px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl h-28 sm:h-32 mt-3 sm:mt-4 text-sm sm:text-base focus:outline-none focus:border-purple-400 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
                 ></textarea>
 
                 <input type="hidden" name="_subject" value="New contact from Remota Sonora" />
@@ -405,22 +417,23 @@ export default function Home() {
 
                 <button 
                   type="submit" 
-                  className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold mt-6 w-full shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40"
+                  className="px-6 sm:px-8 py-3 sm:py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold mt-4 sm:mt-6 w-full text-sm sm:text-base shadow-2xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-blue-500/70 ring-2 ring-blue-400/20 hover:ring-blue-400/40"
                 >
                   {t.form.send}
                 </button>
 
-                <div id="thankMessageModal" className="hidden mt-6 p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 text-green-300 rounded-2xl text-center font-semibold">
+                <div id="thankMessageModal" className="hidden mt-4 sm:mt-6 p-4 sm:p-6 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/50 text-green-300 rounded-2xl text-center text-sm sm:text-base font-semibold">
                   {t.form.thanks}
                 </div>
 
-                <div className="text-xs text-slate-400 mt-4 text-center">
+                <div className="text-xs text-slate-400 mt-3 sm:mt-4 text-center">
                   {t.contact.alt}{" "}
                   <a className="text-blue-400 hover:text-cyan-300 underline transition-colors" href="mailto:hello@remotasonora.com">
                     hello@remotasonora.com
                   </a>
                 </div>
               </form>
+            </div>
             </div>
           </div>
         </div>
