@@ -6,7 +6,8 @@ export default function Privacy() {
   const [lang, setLang] = useState("en");
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    document.documentElement.scrollTop = 0;
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
     if (urlLang === 'es') setLang('es');
