@@ -1,1 +1,73 @@
 
+{
+  "name": "ClientInvoice",
+  "type": "object",
+  "properties": {
+    "client_user_id": {
+      "type": "string",
+      "description": "Reference to ClientUser"
+    },
+    "invoice_number": {
+      "type": "string",
+      "description": "Invoice number"
+    },
+    "invoice_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Invoice date"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date"
+    },
+    "period_start": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing period start"
+    },
+    "period_end": {
+      "type": "string",
+      "format": "date",
+      "description": "Billing period end"
+    },
+    "total_hours": {
+      "type": "number",
+      "description": "Total hours"
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Total amount in USD"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "sent",
+        "paid",
+        "overdue"
+      ],
+      "default": "draft",
+      "description": "Invoice status"
+    },
+    "pdf_url": {
+      "type": "string",
+      "description": "Invoice PDF URL"
+    },
+    "xml_url": {
+      "type": "string",
+      "description": "Invoice XML URL"
+    },
+    "visible_to_client": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether client can see this"
+    }
+  },
+  "required": [
+    "client_user_id",
+    "invoice_number",
+    "invoice_date",
+    "total_amount"
+  ]
+}
