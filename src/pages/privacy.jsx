@@ -1,16 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
 export default function Privacy() {
   const [lang, setLang] = useState("en");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'auto' });
+  useLayoutEffect(() => {
+    // Deshabilitar restauración de scroll del navegador
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // Scroll inmediato
+    window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, []);
+
+  useEffect(() => {
+    // Múltiples intentos de scroll
+    window.scrollTo(0, 0);
+    
+    const timer1 = setTimeout(() => window.scrollTo(0, 0), 0);
+    const timer2 = setTimeout(() => window.scrollTo(0, 0), 50);
+    const timer3 = setTimeout(() => window.scrollTo(0, 0), 100);
+
+    // Parsear idioma
     const urlParams = new URLSearchParams(window.location.search);
     const urlLang = urlParams.get('lang');
     if (urlLang === 'es') setLang('es');
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
   }, []);
 
   const content = {
@@ -119,7 +143,7 @@ export default function Privacy() {
   const t = content[lang];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden relative z-50">
       <header className="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-700/40 shadow-lg shadow-black/50">
         <div className="max-w-7xl mx-auto px-4 py-5 flex items-center justify-between">
           <Link to={createPageUrl("Home")} className="flex items-center gap-3">
