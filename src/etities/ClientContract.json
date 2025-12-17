@@ -1,1 +1,55 @@
-
+{
+  "name": "ClientContract",
+  "type": "object",
+  "properties": {
+    "client_user_id": {
+      "type": "string",
+      "description": "Reference to ClientUser"
+    },
+    "contract_name": {
+      "type": "string",
+      "description": "Contract name"
+    },
+    "contract_pdf_url": {
+      "type": "string",
+      "description": "Contract PDF URL"
+    },
+    "contract_xml_url": {
+      "type": "string",
+      "description": "Contract XML URL"
+    },
+    "signed_contract_url": {
+      "type": "string",
+      "description": "Signed contract uploaded by client"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "sent",
+        "signed"
+      ],
+      "default": "pending",
+      "description": "Contract status"
+    },
+    "sent_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date sent to client"
+    },
+    "signed_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date signed by client"
+    },
+    "visible_to_client": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether client can see this"
+    }
+  },
+  "required": [
+    "client_user_id",
+    "contract_name"
+  ]
+}
