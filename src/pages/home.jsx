@@ -101,6 +101,9 @@ export default function Home() {
             <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
             <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
             <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+            <Link to={createPageUrl("ClientPortal")} className="text-slate-300 hover:text-blue-400 transition-colors">
+              Sign In
+            </Link>
             <button onClick={() => setContactModalOpen(true)} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
               {t.nav.quote}
             </button>
@@ -126,6 +129,9 @@ export default function Home() {
               <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
               <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
               <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
+              <Link to={createPageUrl("ClientPortal")} className="py-2 text-slate-300 hover:text-blue-400 transition-colors" onClick={() => setMobileOpen(false)}>
+                Sign In
+              </Link>
               <button onClick={() => { setContactModalOpen(true); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</button>
               <div className="py-2"><LanguageSwitcher lang={lang} setLang={setLang} /></div>
             </div>
