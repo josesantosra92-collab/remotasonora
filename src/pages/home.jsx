@@ -4,8 +4,6 @@ import {
   useMemo,
   memo
 } from "react";
-import { Link } from "react-router-dom";
-import { createPageUrl } from "@/utils";
 
 // =============================================
 // Landing page bilingüe (EN/ES) - Bold & Contemporary Design
@@ -99,6 +97,7 @@ export default function Home() {
           </div>
           <nav aria-label="Primary" className="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+            <a href="#visibility" onClick={(e) => { e.preventDefault(); document.getElementById('visibility')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.visibility}</a>
             <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
             <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }} className="text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
             <button onClick={() => setContactModalOpen(true)} className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold shadow-xl shadow-blue-500/50 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/60 ring-2 ring-blue-400/20 cursor-pointer">
@@ -124,6 +123,7 @@ export default function Home() {
           <div id="mobile-menu" className="md:hidden border-t border-slate-700/30 bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 py-4 grid gap-3">
               <a href="#services" onClick={(e) => { e.preventDefault(); document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.services}</a>
+              <a href="#visibility" onClick={(e) => { e.preventDefault(); document.getElementById('visibility')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.visibility}</a>
               <a href="#process" onClick={(e) => { e.preventDefault(); document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.process}</a>
               <a href="#pricing" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); setMobileOpen(false); }} className="py-2 text-slate-300 hover:text-blue-400 transition-colors cursor-pointer">{t.nav.pricing}</a>
               <button onClick={() => { setContactModalOpen(true); setMobileOpen(false); }} className="py-2.5 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold text-center cursor-pointer">{t.nav.quote}</button>
@@ -186,19 +186,30 @@ export default function Home() {
                       <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                         <path className="group-hover:animate-bounce" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 14l2 2 4-4" />
+                      </svg>,
+                      <svg className="w-6 h-6 text-white group-hover:animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>,
+                      <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path className="group-hover:animate-pulse" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                     ];
                     const gradients = [
                       "from-orange-500 to-pink-600",
                       "from-purple-500 to-indigo-600", 
                       "from-green-500 to-emerald-600",
-                      "from-yellow-500 to-orange-600"
+                      "from-yellow-500 to-orange-600",
+                      "from-blue-500 to-cyan-500",
+                      "from-teal-500 to-green-500"
                     ];
                     const shadows = [
                       "shadow-orange-500/50",
                       "shadow-purple-500/50",
                       "shadow-green-500/50", 
-                      "shadow-yellow-500/50"
+                      "shadow-yellow-500/50",
+                      "shadow-blue-500/50",
+                      "shadow-teal-500/50"
                     ];
                     return (
                       <li key={i} className="flex items-start gap-4 p-4 rounded-xl hover:bg-slate-800/30 transition-all">
@@ -259,6 +270,33 @@ export default function Home() {
           </div>
         </section>
 
+        {/* VISIBILITY */}
+        <section id="visibility" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50" style={{ scrollMarginTop: '10vh' }}>
+          <div className="max-w-7xl mx-auto px-4 py-24">
+            <div className="text-center max-w-3xl mx-auto mb-20">
+              <h2 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-400 via-cyan-300 to-white bg-clip-text text-transparent drop-shadow-lg tracking-tight">
+                {t.visibility.title}
+              </h2>
+              <p className="mt-6 text-xl text-slate-300 font-light leading-relaxed">{t.visibility.subtitle}</p>
+            </div>
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-2xl border border-slate-700/60 rounded-3xl p-10 shadow-2xl ring-1 ring-white/5">
+                <ul className="space-y-4">
+                  {t.visibility.levels.map((level, i) => (
+                    <li key={i} className="flex items-start gap-4 text-slate-300">
+                      <svg className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="leading-relaxed font-light">{level}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-6 text-sm text-slate-400 italic border-t border-slate-700/40 pt-6">{t.visibility.note}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* PROCESS */}
         <section id="process" className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50" style={{ scrollMarginTop: '18vh' }}>
           <div className="max-w-7xl mx-auto px-4 py-24">
@@ -310,21 +348,31 @@ export default function Home() {
           </div>
         </section>
 
-        {/* LEGAL / CLIENTS */}
+        {/* WHO WE ARE / LEGAL / CLIENTS */}
         <section className="relative border-t border-slate-700/40 bg-slate-950 shadow-inner shadow-black/50">
-          <div className="max-w-7xl mx-auto px-4 py-24 grid md:grid-cols-2 gap-10">
-            <InfoCard 
-              title={t.antipoach.title} 
-              desc={t.antipoach.desc} 
-              items={t.antipoach.items}
-              gradient="from-blue-600 to-cyan-600"
-            />
-            <InfoCard 
-              title={t.clients.title} 
-              desc={t.clients.desc} 
-              items={t.clients.items}
-              gradient="from-slate-600 to-blue-600"
-            />
+          <div className="max-w-7xl mx-auto px-4 py-24 grid gap-10">
+            <div className="grid md:grid-cols-2 gap-10">
+              <InfoCard 
+                title={t.whoweare.title} 
+                desc={t.whoweare.desc} 
+                items={t.whoweare.items}
+                gradient="from-indigo-600 to-purple-600"
+              />
+              <InfoCard 
+                title={t.clients.title} 
+                desc={t.clients.desc} 
+                items={t.clients.items}
+                gradient="from-slate-600 to-blue-600"
+              />
+            </div>
+            <div className="max-w-3xl mx-auto">
+              <InfoCard 
+                title={t.antipoach.title} 
+                desc={t.antipoach.desc} 
+                items={t.antipoach.items}
+                gradient="from-blue-600 to-cyan-600"
+              />
+            </div>
           </div>
         </section>
       </main>
@@ -459,18 +507,18 @@ export default function Home() {
               >
                 {t.footer.backToTop}
               </button>
-              <Link 
-                to={createPageUrl("Privacy")}
+              <a 
+                href="/Privacy"
                 className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
               >
                 {t.footer.privacy}
-              </Link>
-              <Link 
-                to={createPageUrl("Terms")}
+              </a>
+              <a 
+                href="/Terms"
                 className="text-slate-400 hover:text-blue-400 transition-colors underline block md:ml-auto"
               >
                 {t.footer.terms}
-              </Link>
+              </a>
             </div>
           </div>
         </div>
@@ -607,22 +655,34 @@ const InfoCard = memo(function InfoCard({
 // =====================================================
 const translations = {
   en: {
-    nav: { services: "Services", process: "Process", pricing: "Pricing", quote: "Get a quote" },
+    nav: { services: "Services", process: "Process", visibility: "Visibility", pricing: "Pricing", quote: "Get a quote" },
     hero: {
       title1: "Engineers, drafters and architects,",
       title2: "with custom training",
       title3: ", ready for your backlog",
       subtitle:
-        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States dollar (USD) invoices—no payroll or benefits on your side.",
+        "Nearshore solutions for US firms and businesses: structural support, design assistance, drafting, general architecture and landscape design. Monthly United States Dollar (USD) invoices—no payroll or benefits on your side.",
       footnote: "Role-specific training and software alignment.",
       bullets: [
         "Fast relief for load peaks (submittals, redlines, calculation packages).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (per client license).",
-        "Non-Disclosure Agreement (NDA) / Proprietary Information Agreement (PIA), anti-poaching clauses, and Zero-Trust access control.",
-        "1–3 week kickoff process with quality assurance (QA) and checklists.",
+        "Non-Disclosure Agreement (NDA) / Proprietary Information Agreement (PIA), anti-poaching clauses, and Zero-Trust access control: least-privilege access, approved accounts, and client-defined permissions.",
+        "1–3 week kickoff process with Quality Assurance (QA) and checklists.",
+        "Client-led delivery: you set priorities and manage day-to-day; we provide dedicated capacity and continuity.",
+        "Visibility options: timesheets + task reporting by default; optional activity reports and screenshots/screen recording by request in the Statement of Work (SOW).",
       ],
     },
     cta: { meet: "Book a call", learn: "Learn more" },
+    visibility: {
+      title: "Visibility & Reporting (client-selected)",
+      subtitle: "Choose the level of visibility that matches your workflow and compliance needs:",
+      levels: [
+        "Level 0 (default): timesheets + task updates + deliverable-based proof (PDFs, sheets, redlines).",
+        "Level 1 (optional): timesheets + activity reports (apps/URLs) during active work sessions.",
+        "Level 2 (optional): timesheets + activity + screenshots (blurred) and/or screen recording, enabled only if requested in the SOW.",
+      ],
+      note: "Monitoring is transparent, documented, and limited to active work sessions on company-approved devices and accounts."
+    },
     services: {
       title: "Services",
       subtitle:
@@ -664,7 +724,7 @@ const translations = {
         },
         {
           title: "Kickoff / initial setup",
-          desc: "1–3 weeks: Non-Disclosure Agreement (NDA) settled, access setup, playbooks and job checklists."
+          desc: "1–3 weeks: NDA settled, access setup, playbooks and job checklists, reporting level selection (Level 0/1/2), and tool alignment."
         },
         {
           title: "Pilot (up to 3 months)",
@@ -678,7 +738,7 @@ const translations = {
     },
     pricing: {
       title: "Pricing – Pilot (up to 3 months)",
-      note: "*Monthly United States dollar (USD) invoicing. 'From' rates—may vary with required software and scope.",
+      note: "*Monthly United States Dollar (USD) invoicing. 'From' rates—may vary with required software and scope.",
       plans: [
         {
           title: "Drafting – Pilot (up to 3 months)",
@@ -702,14 +762,22 @@ const translations = {
         },
       ],
     },
+    whoweare: {
+      title: "Who we are",
+      desc: "Civil engineers addressing an emerging problem in the US market.",
+      items: [
+        "One partner: Master's in Structural Engineering, Civil Engineering degree, licensed Professional Engineer (PE) and Structural Engineer (SE)",
+        "Another partner: Civil Engineering degree and Cédula Profesional (Mexican professional license), contractor in Mexico"
+      ],
+    },
     antipoach: {
       title: "Contracts with anti-poaching",
       desc:
         "We protect your team and ours with non-solicit and no direct-hire clauses, plus clear IP and confidentiality terms.",
       items: [
-        "NDA (Non-Disclosure Agreement): confidentiality of shared information",
-        "MSA (Master Services Agreement): overarching commercial and legal terms",
-        "SOW (Statement of Work): scope, standards and deliverables per project",
+        "NDA: confidentiality of shared information",
+        "Master Services Agreement (MSA): overarching commercial and legal terms",
+        "SOW: scope, standards and deliverables per project",
       ],
     },
     clients: {
@@ -739,7 +807,7 @@ const translations = {
     },
     footer: {
       left: "Built in Sonora • Operating from Tucson and Hermosillo.",
-      right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States dollar (USD) invoicing | Data safeguarded",
+      right: "Non-Disclosure Agreements (NDAs) | Anti-poaching clauses | United States Dollar (USD) invoicing | Data safeguarded",
       backToTop: "Back to Top",
       privacy: "Privacy Policy",
       terms: "Terms & Conditions",
@@ -747,7 +815,7 @@ const translations = {
   },
 
   es: {
-    nav: { services: "Servicios", process: "Proceso", pricing: "Precios", quote: "Cotiza" },
+    nav: { services: "Servicios", process: "Proceso", visibility: "Visibilidad", pricing: "Precios", quote: "Cotiza" },
     hero: {
       title1: "Ingenieros, drafters y arquitectos,",
       title2: "con capacitación a la medida",
@@ -758,8 +826,10 @@ const translations = {
       bullets: [
         "Relevo rápido en picos de carga (entregables, correcciones/redlines y paquetes de cálculo).",
         "Toolset: AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, Lumion/Enscape (según licencia del cliente).",
-        "Acuerdo de Confidencialidad (NDA) / Acuerdo de Información Propietaria (PIA), cláusulas de no captación de personal (anti‑poaching) y control de acceso Zero‑Trust.",
+        "Acuerdo de Confidencialidad (NDA) / Acuerdo de Información Propietaria (PIA), cláusulas de no captación de personal (anti‑poaching) y control de acceso Zero‑Trust: acceso de mínimos privilegios, cuentas aprobadas y permisos definidos por el cliente.",
         "Kickoff de 1–3 semanas con control de calidad (QA) y listas de verificación.",
+        "Operación dirigida por el cliente: tú defines prioridades y el día a día; nosotros aportamos capacidad dedicada y continuidad.",
+        "Opciones de visibilidad: timesheets y reportes por tareas por defecto; opcional reportes de actividad y capturas/grabación por solicitud en el Statement of Work (SOW).",
       ],
     },
     cta: { meet: "Agenda una llamada", learn: "Conoce más" },
@@ -794,6 +864,16 @@ const translations = {
         },
       ],
     },
+    visibility: {
+      title: "Visibilidad y Reportes (a elección del cliente)",
+      subtitle: "Elige el nivel de visibilidad que mejor se ajuste a tu proceso y cumplimiento:",
+      levels: [
+        "Nivel 0 (por defecto): timesheets + avances por tareas + evidencia por entregables (PDFs, planos, redlines).",
+        "Nivel 1 (opcional): timesheets + reportes de actividad (apps/URLs) durante sesiones de trabajo activas.",
+        "Nivel 2 (opcional): timesheets + actividad + capturas (con blur) y/o grabación de pantalla, solo si se solicita en el SOW.",
+      ],
+      note: "El monitoreo es transparente, documentado y limitado a sesiones activas en equipos/cuentas autorizadas."
+    },
     process: {
       title: "Cómo trabajamos",
       step: "Paso",
@@ -803,8 +883,8 @@ const translations = {
           desc: "Reunión de 30–45 minutos con el cliente para alinear alcance, software/estilo y estándares."
         },
         {
-          title: "Kickoff / configuración inicial",
-          desc: "1–3 semanas: Acuerdo de Confidencialidad (NDA) firmado, accesos, playbooks y listas de verificación de trabajo."
+          title: "Kickoff / setup inicial",
+          desc: "1–3 semanas: NDA definido, configuración de accesos, playbooks y checklists, selección del nivel de reporteo (Nivel 0/1/2) y alineación de herramientas."
         },
         {
           title: "Piloto (hasta 3 meses)",
@@ -818,7 +898,7 @@ const translations = {
     },
     pricing: {
       title: "Precios – Piloto (hasta 3 meses)",
-      note: "*Facturación mensual en dólares estadounidenses (USD). Tarifas 'desde' — pueden variar por software requerido y alcance.",
+      note: "*Facturación mensual en Dólares Estadounidenses (USD). Tarifas 'desde' — pueden variar por software requerido y alcance.",
       plans: [
         {
           title: "Drafting – Piloto (hasta 3 meses)",
@@ -842,14 +922,22 @@ const translations = {
         },
       ],
     },
+    whoweare: {
+      title: "Quiénes somos",
+      desc: "Ingenieros civiles que atendemos un problema emergente en el mercado estadounidense.",
+      items: [
+        "Un socio: Maestría en Ingeniería Estructural, título de Ingeniero Civil, licencia de Ingeniero Profesional (PE) e Ingeniero Estructural (SE)",
+        "Otro socio: título de Ingeniero Civil y Cédula Profesional, contratista en México"
+      ],
+    },
     antipoach: {
       title: "Contratos con cláusula antipoaching",
       desc:
         "Protegemos tu equipo y el nuestro con no-solicitación y no contratación directa, además de propiedad intelectual y confidencialidad claras.",
       items: [
-        "NDA (Non-Disclosure Agreement): confidencialidad de la información compartida",
-        "MSA (Master Services Agreement): términos comerciales y legales generales",
-        "SOW (Statement of Work): alcance, estándares y entregables por proyecto",
+        "NDA: confidencialidad de la información compartida",
+        "Master Services Agreement (MSA): términos comerciales y legales generales",
+        "SOW: alcance, estándares y entregables por proyecto",
       ],
     },
     clients: {
@@ -879,7 +967,7 @@ const translations = {
     },
     footer: {
       left: "Hecho en Sonora • Operamos desde Tucson y Hermosillo.",
-      right: "Acuerdos de Confidencialidad (NDA) | Cláusulas de no captación de personal | Facturación en dólares estadounidenses (USD) | Datos resguardados",
+      right: "Acuerdos de Confidencialidad (NDA) | Cláusulas de no captación de personal | Facturación en Dólares Estadounidenses (USD) | Datos resguardados",
       backToTop: "Volver Arriba",
       privacy: "Políticas de Privacidad",
       terms: "Términos y Condiciones",
