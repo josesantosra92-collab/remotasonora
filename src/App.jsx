@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Privacy from './pages/privacy'
 import Terms from './pages/terms'
-import ClientPortal from './pages/clientportal'
 
 function App() {
   return (
