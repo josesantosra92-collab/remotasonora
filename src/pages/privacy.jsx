@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import { createPageUrl } from "@/utils";
 
-export default function Privacy() {
+export default function Terms() {
   const [lang, setLang] = useState("en");
 
   useLayoutEffect(() => {
@@ -39,102 +39,142 @@ export default function Privacy() {
 
   const content = {
     en: {
-      title: "Privacy Policy",
+      title: "Terms & Conditions",
       lastUpdated: "Last Updated: December 12, 2025",
       sections: [
         {
-          title: "Information We Collect",
-          content: "When you contact us through our website, we collect your name, email address, company information, and any messages you send us. This information is used solely to respond to your inquiries and provide our services."
+          title: "Services",
+          content: "Remota Sonora provides nearshore engineering, drafting, and architectural support services to US-based firms and businesses. All services are provided under a Master Services Agreement (MSA) and specific Statements of Work (SOW)."
         },
         {
-          title: "How We Use Your Information",
-          content: "We use your information to respond to your requests, communicate about our services, and maintain business records. We do not sell, rent, or share your personal information with third parties for marketing purposes."
+          title: "Pilot Phase",
+          content: "All new client relationships begin with a Pilot Phase of up to 3 months. During this period, special pricing applies as we validate workflow, quality standards, and communication protocols. After the Pilot Phase, Production rates apply."
         },
         {
-          title: "Data Security",
-          content: "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. All data is stored securely and access is limited to authorized personnel only."
+          title: "Invoicing and Payment",
+          content: "Services are billed monthly in United States dollars (USD). Payment terms are Net 15 unless otherwise agreed in writing. Late payments may be subject to interest charges."
         },
         {
-          title: "Your Rights",
-          content: "You have the right to access, correct, or delete your personal information at any time. To exercise these rights, please contact us at hello@remotasonora.com."
+          title: "Confidentiality and Non-Disclosure",
+          content: "All projects are protected by Non-Disclosure Agreements (NDA) and Proprietary Information Agreements (PIA). We maintain strict confidentiality of all client information, project data, and business practices."
         },
         {
-          title: "Cookies and Tracking Technologies",
-          content: "Our website may use basic cookies or analytics tools to improve functionality and understand website traffic. You can disable cookies in your browser settings at any time."
+          title: "Anti-Poaching",
+          content: "Our contracts include anti-poaching clauses that prohibit direct hiring of our staff by clients. We protect both your team and ours with clear non-solicitation terms."
         },
         {
-          title: "Server Location",
-          content: "Our website is hosted on secure servers in the United States."
+          title: "Intellectual Property",
+          content: "All work product created for clients remains the property of the client upon full payment. We retain no rights to client project deliverables."
         },
         {
-          title: "Data Retention",
-          content: "We retain your information only for as long as necessary to provide our services or comply with legal obligations."
+          title: "Software and Tools",
+          content: "Clients are responsible for providing necessary software licenses. We work with industry-standard tools including AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp, and visualization software."
         },
         {
-          title: "Data Controller",
-          content: "Remota Sonora acts as the Data Controller for all information collected through this website."
+          title: "Service Level Agreements",
+          content: "Production phase services include agreed Service Level Agreements (SLAs) for communication response times, deliverable turnaround, and quality standards."
         },
         {
-          title: "External Links",
-          content: "Our website may contain links to third-party websites. We are not responsible for their privacy practices and encourage you to review their policies."
+          title: "Scope & Change Orders",
+          content: "Any work outside the agreed scope will require a written Change Order, including revised fees and timelines. This ensures clear expectations and fair compensation for additional work requested by the client."
         },
         {
-          title: "Non-Disclosure Agreements",
-          content: "All client projects are protected under Non-Disclosure Agreements (NDAs). We maintain strict confidentiality of all project information and data."
+          title: "Engineering Responsibility",
+          content: "Remota Sonora provides drafting and engineering support only. We do not act as Engineer of Record (EOR) unless explicitly stated in a separate agreement. All final engineering responsibility remains with the client's licensed professional."
         },
         {
-          title: "Contact Us",
-          content: "If you have any questions about this Privacy Policy, please contact us at hello@remotasonora.com."
+          title: "No Warranty",
+          content: "Services are provided on a best-effort basis without warranties beyond those expressly stated in the MSA or SOW. We maintain professional standards and quality control processes for all deliverables."
+        },
+        {
+          title: "Independent Contractor Status",
+          content: "Our staff operates as independent contractors and are not employees of the client. We maintain full responsibility for our team's payroll, benefits, and work conditions."
+        },
+        {
+          title: "Limitation of Liability",
+          content: "Our liability is limited to the fees paid for the specific services in question. We maintain professional liability insurance for engineering services."
+        },
+        {
+          title: "Governing Law",
+          content: "These Terms & Conditions are governed by the laws of the State of Arizona, USA. Any disputes will be resolved in the appropriate courts of Arizona."
+        },
+        {
+          title: "Termination",
+          content: "Either party may terminate services with 30 days written notice. All outstanding invoices must be paid upon termination."
+        },
+        {
+          title: "Contact",
+          content: "For questions about these Terms & Conditions, contact us at hello@remotasonora.com."
         }
       ]
     },
     es: {
-      title: "Políticas de Privacidad",
+      title: "Términos y Condiciones",
       lastUpdated: "Última actualización: 12 de diciembre de 2025",
       sections: [
         {
-          title: "Información que Recopilamos",
-          content: "Cuando nos contactas a través de nuestro sitio web, recopilamos tu nombre, dirección de correo electrónico, información de la empresa y cualquier mensaje que nos envíes. Esta información se utiliza únicamente para responder a tus consultas y proporcionar nuestros servicios."
+          title: "Servicios",
+          content: "Remota Sonora proporciona servicios nearshore de ingeniería, drafting y soporte arquitectónico para firmas y negocios en EE.UU. Todos los servicios se proporcionan bajo un Acuerdo de Servicios Maestros (MSA) y Declaraciones de Trabajo específicas (SOW)."
         },
         {
-          title: "Cómo Usamos tu Información",
-          content: "Usamos tu información para responder a tus solicitudes, comunicarnos sobre nuestros servicios y mantener registros comerciales. No vendemos, alquilamos ni compartimos tu información personal con terceros con fines de marketing."
+          title: "Fase Piloto",
+          content: "Todas las relaciones con nuevos clientes comienzan con una Fase Piloto de hasta 3 meses. Durante este período, se aplica una tarifa especial mientras validamos el flujo de trabajo, estándares de calidad y protocolos de comunicación. Después de la Fase Piloto, se aplican tarifas de Producción."
         },
         {
-          title: "Seguridad de Datos",
-          content: "Implementamos medidas de seguridad apropiadas para proteger tu información personal contra acceso, alteración, divulgación o destrucción no autorizados. Todos los datos se almacenan de forma segura y el acceso está limitado solo a personal autorizado."
+          title: "Facturación y Pago",
+          content: "Los servicios se facturan mensualmente en dólares estadounidenses (USD). Los términos de pago son Net 15 a menos que se acuerde lo contrario por escrito. Los pagos tardíos pueden estar sujetos a cargos por intereses."
         },
         {
-          title: "Tus Derechos",
-          content: "Tienes derecho a acceder, corregir o eliminar tu información personal en cualquier momento. Para ejercer estos derechos, contáctanos en hello@remotasonora.com."
+          title: "Confidencialidad y No Divulgación",
+          content: "Todos los proyectos están protegidos por Acuerdos de Confidencialidad (NDA) y Acuerdos de Información Propietaria (PIA). Mantenemos estricta confidencialidad de toda la información del cliente, datos del proyecto y prácticas comerciales."
         },
         {
-          title: "Cookies y Tecnologías de Seguimiento",
-          content: "Nuestro sitio web puede usar cookies básicas o herramientas de análisis para mejorar la funcionalidad y comprender el tráfico del sitio web. Puedes desactivar las cookies en la configuración de tu navegador en cualquier momento."
+          title: "Anti-Captación de Personal",
+          content: "Nuestros contratos incluyen cláusulas de no captación de personal que prohíben la contratación directa de nuestro personal por parte de los clientes. Protegemos tanto tu equipo como el nuestro con términos claros de no solicitación."
         },
         {
-          title: "Ubicación del Servidor",
-          content: "Nuestro sitio web está alojado en servidores seguros en los Estados Unidos."
+          title: "Propiedad Intelectual",
+          content: "Todo el trabajo creado para los clientes sigue siendo propiedad del cliente una vez pagado en su totalidad. No conservamos derechos sobre los entregables del proyecto del cliente."
         },
         {
-          title: "Plazo de Conservación de Datos",
-          content: "Conservamos tu información solo el tiempo necesario para proporcionar nuestros servicios o cumplir con obligaciones legales."
+          title: "Software y Herramientas",
+          content: "Los clientes son responsables de proporcionar las licencias de software necesarias. Trabajamos con herramientas estándar de la industria como AutoCAD, Revit, Enercalc, RISA, RAM, ETABS, SketchUp y software de visualización."
         },
         {
-          title: "Responsable de Datos",
-          content: "Remota Sonora actúa como Responsable de Datos para toda la información recopilada a través de este sitio web."
+          title: "Acuerdos de Nivel de Servicio",
+          content: "Los servicios en fase de producción incluyen Acuerdos de Nivel de Servicio (SLA) acordados para tiempos de respuesta de comunicación, entrega de entregables y estándares de calidad."
         },
         {
-          title: "Enlaces Externos",
-          content: "Nuestro sitio web puede contener enlaces a sitios web de terceros. No somos responsables de sus prácticas de privacidad y te alentamos a revisar sus políticas."
+          title: "Alcance y Órdenes de Cambio",
+          content: "Cualquier trabajo fuera del alcance acordado requerirá una Orden de Cambio por escrito, incluyendo tarifas y plazos revisados. Esto asegura expectativas claras y compensación justa por el trabajo adicional solicitado por el cliente."
         },
         {
-          title: "Acuerdos de Confidencialidad",
-          content: "Todos los proyectos de clientes están protegidos bajo Acuerdos de Confidencialidad (NDA). Mantenemos estricta confidencialidad de toda la información y datos del proyecto."
+          title: "Responsabilidad de Ingeniería",
+          content: "Remota Sonora proporciona drafting y apoyo de ingeniería únicamente. No actuamos como Ingeniero Responsable (EOR) a menos que se indique explícitamente en un acuerdo separado. Toda la responsabilidad final de ingeniería permanece con el profesional licenciado del cliente."
         },
         {
-          title: "Contáctanos",
-          content: "Si tienes alguna pregunta sobre esta Política de Privacidad, contáctanos en hello@remotasonora.com."
+          title: "Sin Garantía",
+          content: "Los servicios se proporcionan de buena fe sin garantías más allá de las expresamente establecidas en el MSA o SOW. Mantenemos estándares profesionales y procesos de control de calidad para todos los entregables."
+        },
+        {
+          title: "Estado de Contratista Independiente",
+          content: "Nuestro personal opera como contratistas independientes y no son empleados del cliente. Mantenemos total responsabilidad por la nómina, beneficios y condiciones de trabajo de nuestro equipo."
+        },
+        {
+          title: "Limitación de Responsabilidad",
+          content: "Nuestra responsabilidad está limitada a las tarifas pagadas por los servicios específicos en cuestión. Mantenemos un seguro de responsabilidad profesional para servicios de ingeniería."
+        },
+        {
+          title: "Ley Aplicable",
+          content: "Estos Términos y Condiciones se rigen por las leyes del Estado de Arizona, EE.UU. Cualquier disputa se resolverá en los tribunales apropiados de Arizona."
+        },
+        {
+          title: "Terminación",
+          content: "Cualquiera de las partes puede terminar los servicios con 30 días de aviso por escrito. Todas las facturas pendientes deben pagarse al momento de la terminación."
+        },
+        {
+          title: "Contacto",
+          content: "Para preguntas sobre estos Términos y Condiciones, contáctanos en hello@remotasonora.com."
         }
       ]
     }
