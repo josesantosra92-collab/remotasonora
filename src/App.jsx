@@ -10,8 +10,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
-        <Route path="/portal" element={<ClientPortal />} />
       </Routes>
     </Router>
   )
 }
+
+export default App
