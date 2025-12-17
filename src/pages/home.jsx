@@ -771,7 +771,7 @@ const translations = {
       items: [
         "Master's in Structural Engineering",
         "Civil Engineering degrees",
-        "U.S. licensure: PE (Professional Engineer) and SE (Structural Engineer)",
+        "U.S. licensure: PE (Professional Engineer)",
         "Mexico licensure: Cédula Profesional (Mexican professional license)",
         "On-the-ground contractor experience in Mexico"
       ],
@@ -934,7 +934,7 @@ const translations = {
       items: [
         "Maestría en Ingeniería Estructural",
         "Títulos de Ingeniería Civil",
-        "Licencia en EE.UU.: PE (Ingeniero Profesional) y SE (Ingeniero Estructural)",
+        "Licencia en EE.UU.: PE (Ingeniero Profesional)",
         "Licencia en México: Cédula Profesional",
         "Experiencia como contratista en campo en México"
       ],
