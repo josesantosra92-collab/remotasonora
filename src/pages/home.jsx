@@ -764,10 +764,13 @@ const translations = {
     },
     whoweare: {
       title: "Who we are",
-      desc: "Civil engineers addressing an emerging problem in the US market.",
+      desc: "Civil engineers helping solve a growing capacity gap in the U.S. AEC (Architecture, Engineering, and Construction) market.",
       items: [
-        "One partner: Master's in Structural Engineering, Civil Engineering degree, licensed Professional Engineer (PE) and Structural Engineer (SE)",
-        "Another partner: Civil Engineering degree and Cédula Profesional (Mexican professional license), contractor in Mexico"
+        "Master's in Structural Engineering",
+        "Civil Engineering degrees",
+        "U.S. licensure: PE (Professional Engineer) and SE (Structural Engineer)",
+        "Mexico licensure: Cédula Profesional (Mexican professional license)",
+        "On-the-ground contractor experience in Mexico"
       ],
     },
     antipoach: {
@@ -924,10 +927,13 @@ const translations = {
     },
     whoweare: {
       title: "Quiénes somos",
-      desc: "Ingenieros civiles que atendemos un problema emergente en el mercado estadounidense.",
+      desc: "Ingenieros civiles que ayudan a resolver una creciente brecha de capacidad en el mercado AEC (Arquitectura, Ingeniería y Construcción) de EE.UU.",
       items: [
-        "Un socio: Maestría en Ingeniería Estructural, título de Ingeniero Civil, licencia de Ingeniero Profesional (PE) e Ingeniero Estructural (SE)",
-        "Otro socio: título de Ingeniero Civil y Cédula Profesional, contratista en México"
+        "Maestría en Ingeniería Estructural",
+        "Títulos de Ingeniería Civil",
+        "Licencia en EE.UU.: PE (Ingeniero Profesional) y SE (Ingeniero Estructural)",
+        "Licencia en México: Cédula Profesional",
+        "Experiencia como contratista en campo en México"
       ],
     },
     antipoach: {
